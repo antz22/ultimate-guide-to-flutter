@@ -5,11 +5,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">The Ultimate Guide to App Development with Flutter</h3>
+  <h1 align="center">The Ultimate Guide to App Development with Flutter</h1>
 
   <p align="center">
     A complete and comprehensive guide to learning Flutter with explanations, examples, resources, and tips for Dart, Flutter, Firebase, State Management and more.
