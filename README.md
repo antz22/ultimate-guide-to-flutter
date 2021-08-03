@@ -16,12 +16,12 @@ Learning Flutter is a little messy due to how new the language is -
 
 Here is the pathway of how I learned Flutter, which may be helpful to your journey too.
 
-1. [Learning Dart](##-learning-dart)
-3. [Learning Flutter UI](##-learning-flutter-ui)
-4. [Learning Firebase](##-learning-firebase)
-5. [Connecting Firebase with Flutter](##-connecting-firebase-with-flutter)
-6. [State Management](##-state-management)
-7. [Helpful Resources](##-helpful-resources)
+1. [Learning Dart](#learning-dart)
+3. [Learning Flutter UI](#learning-flutter-ui)
+4. [Learning Firebase](#learning-firebase)
+5. [Connecting Firebase with Flutter](#connecting-firebase-with-flutter)
+6. [State Management](#state-management)
+7. [Helpful Resources](#helpful-resources)
 
 
 ## Learning Dart
@@ -34,12 +34,12 @@ If you have never coded before or have less experience with programming, I recom
 If you have experience with languages like javavscript or java, here are the basics of dart.
 
 Outline:
-- [Variables](###-variables)
-- [Functions](###-functions)
-- [Conditionals](###-conditionals)
-- [Loops](###-loops)
-- [Classes, Objects, and Constructors](###-classes,-objects,-and-constructors)
-- [More Resources](###-more-resources)
+- [Variables](#variables)
+- [Functions](#functions)
+- [Conditionals](#conditionals)
+- [Loops](#loops)
+- [Classes, Objects, and Constructors](#classes,-objects,-and-constructors)
+- [More Resources](#more-resources)
 
 ### Variables
 
