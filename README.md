@@ -9,6 +9,7 @@
     A complete and comprehensive guide to learning Flutter with explanations, examples, resources, and tips for Dart, Flutter, Firebase, State Management and more.
   </p>
 </p>
+<br />
 
 <details open="open">
   <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
