@@ -1,29 +1,52 @@
 <p align="middle">
-  <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg">
+  <a href="https://github.com/antz22/ultimate-guide-to-flutter"><img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg"></a>
 </p>
 
-# Ultimate Guide to App Development with Flutter
+# The Ultimate Guide to App Development with Flutter
+
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li>
+      <a href="#learning-dart">Learning Dart</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#conditionals">Conditionals</a></li>
+        <li><a href="#loops">Loops</a></li>
+        <li><a href="#classes,-objects,-and-constructors">Classes, Objects, and Constructors</a></li>
+        <li><a href="#more-resources">More Resources</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#learning-flutter-ui">Learning Flutter UI</a>
+    </li>
+    <li><a href="#learning-firebase">Learning Firebase</a></li>
+    <li><a href="#connecting-firebase-with-flutter">Connecting Firebase wth Flutter</a></li>
+    <li><a href="#state-management">State Management</a></li>
+    <li>
+      <a href="#best-practices">Best Practices</a>
+    </li>
+    <li><a href="#helpful-resources">Helpful Resources</a></li>
+  </ol>
+</details>
 
 ## Introduction
 
-Flutter is a powerful and intuitive framework for building cross-platform mobile applications developed at Google, using the programming language called Dart (also developed at Google).
+Flutter is a powerful and intuitive framework for building cross-platform mobile applications that uses the Dart programming language.
+
 This essentially means that Flutter can be used to write one codebase for an app that runs on both iOS and Android.
+
 Dart is a language that is similar to languages such as Java and Javascript, so having a bit of experience in these languages will help in learning Flutter.
 
 Learning Flutter is a little messy due to how new the language is - 
 - this means that the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
 - this also means that there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
 
-This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. I hope you find it helpful!
+This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
 
-1. [Getting Started](#getting-started)
-2. [Learning Dart](#learning-dart)
-3. [Learning Flutter UI](#learning-flutter-ui)
-4. [Learning Firebase](#learning-firebase)
-5. [Connecting Firebase with Flutter](#connecting-firebase-with-flutter)
-6. [State Management](#state-management)
-7. [Best Practices](#best-practices)
-8. [Helpful Resources](#helpful-resources)
 
 ## Getting Started
 
@@ -721,7 +744,7 @@ That's the basics of state management. Take a look at the extra resources listed
 
 Best Practices are always important to keep in mind when developing any large projects in Flutter.
 
-1. Folder Structure
+### Folder Structure
 
 To maintain a large project, make sure your folder structure is correctly organized.
 
@@ -771,7 +794,7 @@ Services is used for putting all the classes that contain any business logic. Th
 
 Widgets is used for putting all widgets you custom created that you use for multiple screens. For example, if you created your own Button widget that you want to use on both the login and sign_in screens, just put that Button file into the widgets folder.
 
-2. Separate business logic (aka backend / stuff dealing with data) from frontend
+### Separate business logic (aka backend / stuff dealing with data) from frontend
 
 Business logic is essentially any code that doesn't directly have to do with the layout of the app. For example, if you had a login screen, the UI would be the Column, TextField, and ElevatedButton widgets. THe business logic would be how the user would sign in to the backend server you are using (for example, Firebase).
 
@@ -779,7 +802,7 @@ It is generally a good idea to keep these separated so you don't mix backend / d
 
 What this means for us is that we should place as much of the business logic / backend code in the 'services' folder as we can, and not in the 'screens' folder. I usually do this by defining an 'APIServices' class that has a number of methods that deals with the business logic.
 
-3. Abstract as much as possible (make more widgets)
+### Abstract as much as possible (make more widgets)
 
 In Flutter, it is in your best interest to extract as much code as you can. What this means is that whenever you have a part of the widget tree that is dedicated to a single use case, extract it into its own widget and put it somewhere else. Here's an example.
 
@@ -872,7 +895,7 @@ class FoodItemsSection extends StatelessWidget {
 
 The result is much cleaner and much easier to debug and code with.
 
-4. Testing
+### Testing
 
 Creating unit tests for your Flutter app are a very convenient way to make sure adding new features doesn't break your code. 
 
