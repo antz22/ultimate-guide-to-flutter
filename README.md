@@ -2,10 +2,8 @@
   <a href="https://github.com/antz22/ultimate-guide-to-flutter"><img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg"></a>
 </p>
 
-<!-- PROJECT LOGO -->
-<br />
 <p align="center">
-  <h1 align="center">The Ultimate Guide to App Development with Flutter</h1>
+  <h2 align="center">:eight_spoked_asterisk: The Ultimate Guide to App Development with Flutter :eight_spoked_asterisk:</h2>
 
   <p align="center">
     A complete and comprehensive guide to learning Flutter with explanations, examples, resources, and tips for Dart, Flutter, Firebase, State Management and more.
