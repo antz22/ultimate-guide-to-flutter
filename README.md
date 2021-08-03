@@ -4,7 +4,7 @@
 
 # The Ultimate Guide to App Development with Flutter
 
-<details open="open">
+<details>
   <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
