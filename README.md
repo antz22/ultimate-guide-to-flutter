@@ -87,6 +87,10 @@ Functions are declared by specifying the return type, the name of the function, 
     List<String> people() {
         return ['John', 'Doe'];
     }
+
+Asynchronous functions are functions that can execute different commands at the same time - asynchronously. An example of how this would be useful is in calling APIs. If our function calls an API and assigns a variable to the API's response but our widget is waiting for this function to finish in order to build, we might need to make this function asynchronous, allowing it to run in the background (at the same time), letting other commands (like the building of the widgets) after the API call to run in the meantime. 
+
+If we ever need our function to wait for some line of code to finish before we continue, we simply precede the code with the keyword, 'await'.
     
 For asynchronous functions, add the 'async' keyword between the parentheses and the curly braces, and enclose the return type in 'Future<return type>'.
 
@@ -279,12 +283,115 @@ This series is extremely good on getting familiar with the structure of Firebase
 
 [Get to know Cloud Firestore](https://youtube.com/playlist?list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ)
 
-Some other really good resources:
+Essentially, a Firebase Firestore database is created by making top-level 'collections' which can be things like 'Users', 'Messages', 'Products', etc. These collections can either have subcollections (Products -> Electronics), or they can have documents. 
+
+Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Products collection might look:
+
+Products    ->      Electronics     ->       Macbook Pro
+                    Plants                   Samsung phone
+                    Food                     Thinkpad X220
+
+Where the Macbook, Samsung and Thinkpad are documents in the collection of Electronics. Macbook Pro might contain fields like:
+
+    id: 1
+    name: Macbook Pro
+    price: 1500
+    stock: 25
+    releaseDate: 2016
+    rating: 3.9
+    company: Apple
+    ...
+
+The thing about No-SQL databases is that you can create documents in the same collection without the same fields!! For example, the Samsung phone document might be missing the 'rating' field, but there wouldn't be any errors.
+
+Some other important things to know about Firebase are billing and security rules.
+
+Billing in Firestore is charged not by the size of the database, but by the number of reads and writes to the database. For example, if you create an Electronics product (in the form of a document) and you add it to the database, it counts as one write. If you wanted to update the price of the product, it would also count as 1 write.
+
+If you needed to load all the 'Food' collection's products, Firebase would charge you 1 read per every document in the collection.
+
+However, Firebase is quite generous with it's limits. But, if you would like to take your app to production (put it into the real world), it's best to be wary of how billing works in order to optimize your database calls.
+
+Check the [Firebase pricing page](https://firebase.google.com/pricing) to learn about the limits for the free tier.
+
+More really good resources:
 
 - [Firebase - Ultimate Beginner's Guide](https://youtu.be/9kRgVxULbag)
 
 ## Connecting Firebase with Flutter
 
+Now that we know about the most important part of Firebase (the Firestore database), how do we get access to that data in Flutter?
+
+We can use a StreamBuilder for this purpose. A 'Stream' is essentially just a stream of data that we are constantly watching for changes in. One end of the stream is the Firestore database. The other end of the stream is our app. 
+
+Thus, when something changes in the Firestore database (say, a new product is added), that change gets reflected on our app by the StreamBuilder which notices that change, and rebuilds the widget in order to incorporate that change.
+
+Here's the syntax:
+
+    StreamBuilder(
+        // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document in the subcollection 'Electronics'
+        stream: FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').snapshots(),
+        // builder defines what will be built on the app using this 'snapshot' data (the stream data)
+        // Firestore collections are of type QuerySnapshot
+        // If we want to query one specific document, it is of type DocumentSnapshot
+        // Both are referred to as AsyncSnapshots because they are asynchronous snapshots
+        builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+            // check that there is data in the stream and that it has finished loading
+            if (snapshot.hasData) {
+                return Container(
+                    // snapshot.data gives you access to all the fields in the document
+                    // get the values of the fields by using square brackets and the 
+                    // name of the field, like so
+                    child: Text(snapshot.data['name'])
+                ),
+            }, else {
+                // if there's no data yet, show a loading sign
+                return CircularProgressIndicator();
+            }
+        },
+    )
+
+It might look complicated, but it really isn't. On one side you are accessing a stream of data, whether it be a collection or document, and you are building a widget that has access to that data through the 'snapshot' variable. If there are any changes that the StreamBuilder detects on Firestore's end, the widget will be rebuilt.
+
+StreamBuilders are great, but what about if you didn't need to listen to changes on Firestore's end? What if you just wanted to retrieve some information, say the price of the Macbook, and be done with it?
+
+We can do that with a FutureBuilder.
+
+FutureBuilders take in an asynchronous function as a parameter, and a builder to build a widget tree once that function has finished executing. In our example, our asynchronous function or 'future' (as the FutureBuilder calls it) would be retrieving the price of the Macbook, and our builder would be the widgets displaying that price.
+
+    // defining an async function that returns an int
+    Future<int> retrieveMacbookPrice() async {
+        // PS here's how to retrieve a single document from Firestore - 
+        // in our case, the Macbook document
+        var document = await FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').get(),
+        // The data you get back will be a dictionary that maps keys (strings) to values (which have dynamic types)
+        Map<String, dynamic> macbookData = document.data();
+
+        int macbookPrice = macbookData['price'];
+    }
+
+    FutureBuilder(
+        // builder will only build after this future is done executing
+        future: retrieveMacbookPrice(),
+        // the 'snapshot' here refers to what is returned from the future!
+        builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+            if (snapshot.hasData) {
+                // data from the snapshot is accessed like so
+                int price = snaphot.data['price']
+                return Container(
+                    // convert int to string
+                    child: Text(price.toString()),
+                );
+            } else {
+                // if there's no data yet, show a loading sign
+                return CircularProgressIndicator();
+            }
+
+        }
+
+    )
+
+Whew, That was a lot! But guess what... Now that you know about how Firebase, FutureBuilders, and StreamBuilders work, you are very far in your journey to creating robust apps in Flutter.
 
 
 ## State management
@@ -297,9 +404,64 @@ You could pass the username as a parameter for all the stateless and stateful wi
 
 This can be done using a Provider, a built in state management solution.
 
-- MultiProvider
-- StreamBuilder
-- FutureBuilder
+A Provider is called a 'Provider' because it is a parent widget that 'provides' a value / entity to pass down to the child widget, so that the child widget has access to everything from the value/entity. In our example, if we had a 'Cart' class that we wanted to access in child widgets, it would look something like this:
+
+    Provider(
+        create: (context) => CartModel(),
+        child: MyApp(),
+    )
+
+Thus, in the MyApp child widget, we would have access to the CartModel and all of its methods and such. You can instantiate the CartModel class to access the data in two ways:
+
+    // 1st way
+    Provider.of<CartModel>(context).removeAllItems();
+
+    // 2nd way
+    // context.watch listens for changes in CartModel - if data changes, the parent will rebuild
+    // whatever is necessary
+    context.watch<CartModel>().removeAllItems();
+    // context.read returns CartModel / the model of interest without listening to changes in 
+    // the data
+    context.read<CartModel>().removeAllItems();
+
+This calls Provider to look at the model that is of type CartModel, and calls the method removeAllItems(). In the 2nd way, the object of type CartModel (whatever is between < >) is instantianted by the following parentheses (context.read< >()).
+
+What if we wanted to access another piece of data that requires state management - say, the user's preferences for their color theme in the app? We could create a class called 'UserPreferences', but how would we have access to it on top of the CartModel class?
+
+One way to do it would be to nest Providers.
+
+    Provider(
+        create: (context) => CartModel(),
+        child: Provider(
+            create: (context) => UserPreferences(),
+            child: MyApp(),
+        ),
+    )
+
+So we would have access to both the UserPreferences model and CartModel in MyApp. But you can probably tell that this gets unwieldly, fast, right? That's where MultiProvider comes into play. 
+
+MultiProvider allows us to define multiple 'providers' at the very top of the app (main.dart), where ALL the child widgets have access to each of the providers.
+
+    MultiProvider(
+        providers: [
+            Provider<CartModel>(create: (_) => CartModel()),
+            Provider<UserPreferences>(create: (_) => UserPreferences()),
+        ],
+        child: MyApp(),
+    )
+
+What a natural progression!
+
+That's the basics of state management. Take a look at the extra resources listed below to get more familiar with these concepts and syntax.
+
+
+## Good Practices
+
+- Abstract as much as possible (make more widgets)
+- Folder structure
+- Testing
+- Separate business logic (aka backend / stuff dealing with data) from frontend
+
 
 
 ## Helpful Resources
