@@ -2,7 +2,19 @@
   <a href="https://github.com/antz22/ultimate-guide-to-flutter"><img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg"></a>
 </p>
 
-# The Ultimate Guide to App Development with Flutter
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+  <h3 align="center">The Ultimate Guide to App Development with Flutter</h3>
+
+  <p align="center">
+    A complete and comprehensive guide to learning Flutter with explanations, examples, resources, and tips for Dart, Flutter, Firebase, State Management and more.
+  </p>
+</p>
 
 <details open="open">
   <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
@@ -293,7 +305,7 @@ Create a flutter project with the following command.
 $ flutter create <project_name>
 ```
 
-The folder structure will look something like this. We will be putting all of our code in the 'lib' folder, and I'll explain the other folders later in the guide. For now, just follow along wiht the code in the guide and don't worry about project setup just yet.
+The folder structure will look something like this. We will be putting all of our code in the 'lib' folder, and I'll explain the other folders later in the guide. For now, just follow along with the code in the guide and don't worry about project setup just yet.
 
 <img width="35%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/project_structure.png">
 
@@ -304,13 +316,13 @@ Good job! Now that we have our environment set up, let's take a look at how apps
 
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework.
 
-Widgets are essentially Flutter's abstracted app elements. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
+Widgets are essentially the basic elements of an app that Flutter has packaged into components for us. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
 
 ```dart
 Text('Some string here');
 ```
 
-There's also a prebuilt widget from the Flutter library called the ElevatedButton (just a Material theme button). Another one is the TextField, which handles text fields.
+There's also a prebuilt button widget from the Flutter library called the ElevatedButton (just a Material theme button). Another one is the TextField, which handles input text.
 
 ### Layout
 
@@ -327,6 +339,7 @@ Some more important layout widgets are the Row and Column widgets. These widgets
 ```dart
 Row(
   children: [
+    // in the app, child widgets of a row are laid out left to right like so
     Text('left text'),
     Text('middle text'),
     Text('right text'),
@@ -335,6 +348,7 @@ Row(
 
 Column(
   children: [
+    // child widgets of a column are laid out top to bottom like so
     Text('top text'),
     Text('middle text'),
     Text('bottom text'),
@@ -342,7 +356,7 @@ Column(
 )
 ```
 
-Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget lays out the screen for us, and it is used like this:
+Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget is usually used to lay out or 'scaffold' the screen for us, and it is used like this:
 
 ```dart
 Scaffold(
@@ -375,11 +389,11 @@ We will see later how these look in screenshots.
 
 Each widget built by Flutter can be passed a number of properties or parameters. As we saw earlier, the Container widget takes in a 'child' property, and it can also take in a 'color' property to define the background color of the Container.
 
-Each widget will have a number of parameters specific to that widget, that you can learn about by reading the Flutter Documentation or by using the IntelliSense of your IDE / Text Editor. For example, in VS Code, you can press ctrl+space or hover after typing in a Widget to see what properties it can use.
+Each widget will have a number of parameters specific to that widget that you can learn about by reading the Flutter Documentation or by using the IntelliSense of your IDE / Text Editor. For example, in VS Code, you can press ctrl+space or hover after typing in a Widget to see what properties it can use.
 
 Usually, you can also pass in all of your styles to the widget through the parameter.
 
-Also, many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. the 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
+Many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. the 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
 
 In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget.
 
