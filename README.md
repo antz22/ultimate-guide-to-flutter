@@ -16,13 +16,26 @@ Learning Flutter is a little messy due to how new the language is -
 
 This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. I hope you find it helpful!
 
-1. [Learning Dart](#learning-dart)
+1. [Getting Started](#getting-started)
+2. [Learning Dart](#learning-dart)
 3. [Learning Flutter UI](#learning-flutter-ui)
 4. [Learning Firebase](#learning-firebase)
 5. [Connecting Firebase with Flutter](#connecting-firebase-with-flutter)
 6. [State Management](#state-management)
-6. [Best Practices](#best-practices)
-7. [Helpful Resources](#helpful-resources)
+7. [Best Practices](#best-practices)
+8. [Helpful Resources](#helpful-resources)
+
+## Getting Started
+
+Before we get started with dart and flutter, we first need to set up our programming environment, which is what we will be using to code flutter apps.
+
+The two main IDEs that provide the most features for Dart and Flutter are Visual Studio Code (VS Code) and Android Studio. Choosing either one is up to you, but I do have a slight preference to VS Code because it looks sick... 
+
+Vim can also be used if you have coc or native lsp and install the dart and flutter extensions. 
+
+Choosing the right IDE is essential to getting all the features that the Dart programming language provides us with. Once you have your IDE / Text Editor, make sure you install the Dart extension and the Flutter extension. With these extensions, our IDE / Text Editor will perform extremely detailed error checking, type checking, null safety checks, and formatting to make our lives as developers a lot easier.
+
+Once you have your environment set up, let's move on!
 
 
 ## Learning Dart
@@ -278,11 +291,55 @@ ListView.builder(
         return Container(
             child: Text(people[index]),
         );
-    }
+    },
 )
 ```
 
 We will see later how these look in screenshots.
+
+### Formatting
+
+Now, you might be wondering, what the heck are all these commas and new lines everywhere? The reason I've laid out the code like this is because of how your IDE will format your code for you. It does this by detecting trialing commas and adding corresponding new lines. 
+
+Adhering to the formatter will make your code much more readable both for yourself and for others. Here's a simple example.
+
+```dart
+
+// weird code you might write totally without a formatter
+// not very good, is it?
+Column(children:[
+    Container
+    (child: Text
+    (
+        'hi!'
+    )),
+    Text(
+        'hi'
+    )
+]
+)
+
+// code you might write with the formatter, but without adhering to the formatting guidelines
+Column(children: [
+    Container(color: Color(0xFFFFFF), child: Text('hey there'), margin: EdgeInsets.all(5.0), padding: EdgeInsets.all(5.0)),
+    Text('hi')])
+
+// code you write with the formatter, that adheres to the formatter
+Column(
+    children: [
+        Container(
+            color: Color(0xFFFFFF),
+            child: Text('hey there'),
+            margin: EdgeInsets.all(5.0),// add a trailing comma to the last parameter (margin)
+        ), // add a trailing comma to the Widget
+        Text('hi'), // add a trailing comma to the last child of the Column
+    ], // add a trialing comma to the children parameter
+)
+```
+
+Would you agree with me in saying that the last example is the easiest to read and the easiest to code with (disregarding the comments)?
+
+Simply just add a trailing comma to your widgets and their parameters, hit save, and the formatter will do the rest for you. Over time, you'll get better and better at it.
 
 ### Stateless Widgets
 
