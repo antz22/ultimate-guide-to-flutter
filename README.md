@@ -12,15 +12,16 @@ Dart is a language that is similar to languages such as Java and Javascript, so 
 
 Learning Flutter is a little messy due to how new the language is - 
 - this means that the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
-- this also means that there are a lack of freely available, well thought out and comprehensive courses or books
+- this also means that there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
 
-Here is the pathway of how I learned Flutter, which may be helpful to your journey too.
+This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. I hope you find it helpful!
 
 1. [Learning Dart](#learning-dart)
 3. [Learning Flutter UI](#learning-flutter-ui)
 4. [Learning Firebase](#learning-firebase)
 5. [Connecting Firebase with Flutter](#connecting-firebase-with-flutter)
 6. [State Management](#state-management)
+6. [Best Practices](#best-practices)
 7. [Helpful Resources](#helpful-resources)
 
 
@@ -73,6 +74,13 @@ foo = ['bar']; // ERROR
     
 You can use 'var' and 'dynamic' to make a variable type dynamic, but it is usually not a good idea to do this, as it could end up in frustrating errors down the line.
 
+Additionally, dart has a unique 'final' and 'const' operator that can be used for declaring variables. 'final' is generally used to declare a variable that won't change once it's declared. For example, if a user types in their name and we save it to a variable, we know that variable (their name) won't change, so we can initialize / declare it like so:
+
+```dart
+final String name;
+```
+
+The 'const' keyword is a little more of a specific use case - it makes the variable constant from copile-time only. We'll see what that means later, but for now, don't worry about 'const.'
 
     
 ### Functions
@@ -297,6 +305,42 @@ class ListOfStates extends StatelessWidget {
 
 Good news - most IDEs contain snippets to automatically create stateless widgets for you! Just type in stless into your IDE and press TAB or Enter to generate all the code necessary.
 
+If you would like to add parameters for your stateless widget (for example, making a 'message' parameter to pass into a stateless widget that displays that message), we need to use constructors in the same way that classes are constructed. Here's how.
+
+```dart
+class DisplayMessage extends StatelessWidget {
+    // add it to the constructor here after the key, as 'required this.<parameter>'
+    DisplayMessage({ Key? key, required this.message }) : super(key: key);
+
+    // initialize it as a 'final' variable (it won't change)
+    final String message
+
+    @override
+    Widget build(BuildContext context) {
+        return Container(
+            child: Text(message),
+        );
+    }
+}
+```
+
+This widget would then be instantiated in another parent widget like so:
+
+```dart
+Scaffold(
+    body: Column(
+        children: [
+            ...
+            // instantiating the stateless widget we just created (which is in another file) 
+            // with string, the message we want to display
+            DisplayMessage(message: 'Hello there!'),
+            ...
+        ],
+    ),
+)
+```
+
+
 ### Stateful Widgets 
 
 Stateful widgets are widgets that can react to certain changes and then be rebuilt. This is useful if we want our app to be interactive. For example, let's say we want to have a counter in our app. Whenever the user presses a '+' button, we want the app to display an increase in a variable we define, 'count'. Here's how.
@@ -344,10 +388,38 @@ class _DisplayCountState extends State<DisplayCount> {
 
 We also have access to IDE snippets for stateful widgets too. Just type in stful.
 
+Constructors in stateful widgets are the same, but they are only declared in the DisplayCount widget and not the _DisplayCountState widget. In the _DisplayCountState widget where you will be putting your code, you can refer to the variable as widget.<variable>.
+
+```dart
+class DisplayCount extends StatefulWidget {
+    const DisplayCount({Key? key, required this.message}) : super(key: key); 
+
+    final String message;
+
+    @override
+    _DisplayCountState createState() => _DisplayCountState();
+}
+
+class _DisplayCountState extends State<DisplayCount> {
+    ...
+    @override
+    Widget build(BuildContext context) {
+        return Column(
+            children: [
+                // refer to the 'message' as widget.message
+                Text(widget.message),
+                ...
+            ],
+        );
+    }
+    ...
+}
+```
+
+Stateful widgets are instantiated in the same way as Stateless widgets are.
+
+
 Stateful widgets are very useful for dealing with anything related to business logic, interactive features, and listening to streams of data on the backend, as we'll see later.
-
-### Extracting Widgets
-
 
 
 ## Null Safety
@@ -588,9 +660,9 @@ What a natural progression!
 That's the basics of state management. Take a look at the extra resources listed below to get more familiar with these concepts and syntax.
 
 
-## Good Practices
+## Best Practices
 
-Good Practices are always important to keep in mind when developing any large projects in Flutter.
+Best Practices are always important to keep in mind when developing any large projects in Flutter.
 
 1. Folder Structure
 
@@ -655,6 +727,8 @@ What this means for us is that we should place as much of the business logic / b
 In Flutter, it is in your best interest to extract as much code as you can. What this means is that whenever you have a part of the widget tree that is dedicated to a single use case, extract it into its own widget and put it somewhere else. Here's an example.
 
 ```dart
+// products_screen.dart
+
 Scaffold(
     // Column widget to lay out everything on the page vertically
     body: Column(
@@ -689,6 +763,8 @@ Scaffold(
 This would be putting the 'Food items' section and 'Electronics' section into a single widget tree, which gets messy and confusing if the project grows bigger. As best practices, here's what it would look like instead.
 
 ```dart
+// screens/products/products_screen.dart
+
 Scaffold(
     body: Column(
         children: [
@@ -698,6 +774,51 @@ Scaffold(
         ],
     ),
 )
+
+// screens/products/components/electronics_section.dart
+
+class ElectronicsSection extends StatelessWidget {
+    const ElectronicsSection({ Key? key }) : super(key: key);
+
+    // same widgets, just put into the build function as a returned value
+    @override
+    Widget build(BuildContext context) {
+        return Column(
+            children: [
+                Container(
+                    child: Text('Electronics'),
+                ),
+                Text('Macbook pro'),
+                Text('iPhone'),
+                Text('Galaxy Buds'),
+            ],
+        );
+    }
+}
+
+
+// screens/products/components/food_items_section.dart
+
+class FoodItemsSection extends StatelessWidget {
+    const FoodItemsSection({ Key? key }) : super(key: key);
+
+    // same widgets, just put into the build function as a returned value
+    @override
+    Widget build(BuildContext context) {
+        return Column(
+            children: [
+                Container(
+                    child: Text('Food items'),
+                ),
+                Text('Jelly beans'),
+                Text('Peanut Butter'),
+                Text('Apples'),
+            ],
+        );
+    }
+}
+
+
 ```
 
 The result is much cleaner and much easier to debug and code with.
