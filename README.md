@@ -1,3 +1,7 @@
+<p align="middle">
+    <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg">
+</p>
+
 # Ultimate Guide to App Development with Flutter
 
 ## Introduction
