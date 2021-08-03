@@ -4,7 +4,7 @@
 
 # The Ultimate Guide to App Development with Flutter
 
-<details>
+<details open="open">
   <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
@@ -23,6 +23,7 @@
     <li>
       <a href="#learning-flutter-ui">Learning Flutter UI</a>
       <ul>
+        <li><a href="#installation">Installation</a></li>  
         <li><a href="#widgets">Widgets</a></li>  
         <li><a href="#layout">Layout</a></li>  
         <li><a href="#formatting">Formatting</a></li>  
@@ -267,13 +268,43 @@ As always, make sure you review these concepts often to get familiar with them. 
 
 ## Learning Flutter UI
 
-Now that you know some of the basics of the dart programming language, let's take a look at the Flutter framework - first, we'll dive into how apps are laid out.
+Now that you know some of the basics of the dart programming language, let's take a look at the Flutter framework - first, we'll install a programing environment for Flutter.
+
+### Installation
+
+The installation process can be a bit tricky for some users depending on the OS, but it isn't too bad. Follow these resources to install Flutter and the necessary tools depending on your OS (in addition to Flutter, you will also need an emulator / virtual phone in order to test your apps).
+
+Windows
+- [Flutter Docs - Windows Install](https://flutter.dev/docs/get-started/install/windows)
+
+MacOS
+- [Flutter Docs - MacOS Install](https://flutter.dev/docs/get-started/install/macos)
+
+Linux
+- [Flutter Docs - Linux Install](https://flutter.dev/docs/get-started/install/linux)
+
+Run 
+
+  flutter doctor
+
+To make sure your environment is all ready to go.
+
+Create a flutter project with the following command.
+
+  flutter create <project_name>
+
+The folder structure will look something like this. We will be putting all of our code in the 'lib' folder, and I'll explain the other folders later in the guide. For now, just follow along wiht the code in the guide and don't worry about project setup just yet.
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/project_structure.png">
+
+Good job! Now that we have our environment set up, let's take a look at how apps are laid out in the Flutter framework.
+
 
 ### Widgets
 
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework.
 
-Widgets are essentially Flutter's abstracted app elements. They are instantiated with specific properties that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
+Widgets are essentially Flutter's abstracted app elements. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
 
 ```dart
 Text('Some string here');
@@ -339,6 +370,68 @@ ListView.builder(
 ```
 
 We will see later how these look in screenshots.
+
+### Properties / Parameters
+
+Each widget built by Flutter can be passed a number of properties or parameters. As we saw earlier, the Container widget takes in a 'child' property, and it can also take in a 'color' property to define the background color of the Container.
+
+Each widget will have a number of parameters specific to that widget, that you can learn about by reading the Flutter Documentation or by using the IntelliSense of your IDE / Text Editor. For example, in VS Code, you can press ctrl+space or hover after typing in a Widget to see what properties it can use.
+
+Usually, you can also pass in all of your styles to the widget through the parameter.
+
+Also, many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. the 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
+
+In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget.
+
+```dart
+Text(
+  'text to display',
+  style: TextStyle(
+    // font color
+    color: Colors.black,
+    // font size
+    fontSize: 12.0,
+    // font weight
+    fontWeight: FontWeight.bold,
+  ),
+)
+```
+
+For styling in a Container widget, we use the 'decoration' property and pass in a 'BoxDecoration' object that is instantiated with our styles.
+
+```dart
+Container(
+  // styling the container
+  decoration: BoxDecoration(
+    // you can define the background color in this object instead
+    color: Colors.black,
+    // border radius - valid arguments must be of class BorderRadius
+    borderRadius: BorderRadius.circular(20.0),
+  ),
+  // margin of the container - argument must be of class EdgeInsets
+  margin: EdgeInsets.all(8.0),
+  // child element
+  child: Text('hi'),
+)
+```
+
+In Column widgets, you might need to vertically align your objects to the center of the page. Here's how you could do that using the Column widget's 'mainAxisAlignment' property (main axis of the column is vertical). You can also align text horizontally in a column widget using the 'crossAxisAlignment' property.
+
+```dart
+Column(
+  // argument passed in must use the MainAxisAlignment object - can you start to see the practices and conventions Flutter uses here?
+  mainAxisAlignment: MainAxisAlignment.center,
+  children: [
+    Text('top text'),
+    Text('center text'), 
+    Text('bottom text'),
+  ],
+)
+```
+
+Other properties of Column include crossAxisAlignment, mainAxisSize, and more. Chances are, if you feel like you need to do something to style your widget, you just need to Google the properties of that widget, or Google how to accomplish what you need to find which property to use.
+
+The amount of properties and classes you need might seem a bit daunting to learn about, but over time it will become intuitive for you! 
 
 ### Formatting
 
@@ -580,24 +673,11 @@ This series is extremely good on getting familiar with the structure of Firebase
 
 Essentially, a Firebase Firestore database is created by making top-level 'collections' which can be things like 'Users', 'Messages', 'Products', etc. These collections can either have subcollections (Products -> Electronics), or they can have documents. 
 
-Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Products collection might look:
+Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Macbook Pro document in the Products collection might look: (I'm accessing a Cloud Firestore database through the [Firebase Console](https://console.firebase.google.com/) on a dummy project I created)
 
-  Products    ->      Electronics     ->       Macbook Pro
-                      Plants                   Samsung phone
-                      Food                     Thinkpad X220
+<img width="80%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/firestore.png">
 
-Where the Macbook, Samsung and Thinkpad are documents in the collection of Electronics. Macbook Pro might contain fields like:
-
-  id: 1
-  name: Macbook Pro
-  price: 1500
-  stock: 25
-  releaseDate: 2016
-  rating: 3.9
-  company: Apple
-  ...
-
-The thing about No-SQL databases is that you can create documents in the same collection without the same fields!! For example, the Samsung phone document might be missing the 'rating' field, but there wouldn't be any errors.
+The thing about No-SQL databases is that you can create documents in the same collection without the same fields!! For example, the 'Pencil' document might be missing the 'rating' field, but there wouldn't be any errors.
 
 Some other important things to know about Firebase are billing and security rules.
 
@@ -628,7 +708,7 @@ Here's the syntax:
 ```dart
 StreamBuilder(
   // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document in the subcollection 'Electronics'
-  stream: FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').snapshots(),
+  stream: FirebaseFirestore.instance.collection('Products').doc('Macbook Pro').snapshots(),
   // builder defines what will be built on the app using this 'snapshot' data (the stream data)
   // Firestore collections are of type QuerySnapshot
   // If we want to query one specific document, it is of type DocumentSnapshot
@@ -665,7 +745,7 @@ FutureBuilders take in an asynchronous function as a parameter, and a builder to
 Future<int> retrieveMacbookPrice() async {
   // PS here's how to retrieve a single document from Firestore - 
   // in our case, the Macbook document
-  var document = await FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').get(),
+  var document = await FirebaseFirestore.instance.collection('Products').doc('Macbook Pro').get(),
   // The data you get back will be a dictionary that maps keys (strings) to values (which have dynamic types)
   Map<String, dynamic> macbookData = document.data();
 
@@ -774,24 +854,11 @@ To maintain a large project, make sure your folder structure is correctly organi
 
 Here's how folders are usually structured:
 
-Lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
+As we saw before, lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
 
-  PROJECT_DIRECTORY -> android
-                      assets
-                      ios
-                      lib     
-                      test
-                      web
-
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/folder_structure.png">
 
 In the lib folder, you should split code up into screens, models, services, widgets, and constants. Main.dart will be your wrapper file.
-
-  lib    ->   constants
-              models
-              screens
-              services
-              widgets
-              main.dart
 
 Constants is used for placing constants.dart, which usually defines ThemeData and color schemes for your app, to make it easier for your app to conform to a certain style. For example, I usually define kPrimaryColor and kSecondaryColor in the constants.dart file. You can also use a theme.dart file to create ThemeData objects.
 
@@ -809,14 +876,13 @@ Then I would name the file user.dart (if it is two words, simply use an undersco
 
 Screens is the folder where you will place most of your code - the UI code for all of your screens. To create a new screen, create a folder and name it the screen, and place your code in that subfolder. This way, all your screens will be different folders in the 'screens' folder. In your specific screen folder, name the main file (name_of_screen).dart.
 
-    screens ->  login -> login.dart
-                sign_in -> sign_in.dart
-
 If your screen has many components to it, create a components folder in the screen's directory.
 
 Services is used for putting all the classes that contain any business logic. These follow the same folder conventions as the models folder.
 
 Widgets is used for putting all widgets you custom created that you use for multiple screens. For example, if you created your own Button widget that you want to use on both the login and sign_in screens, just put that Button file into the widgets folder.
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/example_folder_structure.png">
 
 ### Separate Business Logic from Frontend
 
@@ -930,6 +996,8 @@ Take a look at these resources to learn about testing in flutter.
 - [Flutter Docs - Testing Flutter Apps](https://flutter.dev/docs/testing)
 
 ## Helpful Resources
+
+Now that you know the basic syntax of Flutter and how it works, you need to put this knowledge into practice! I recommend following along with Flutter App Build tutorials to see just how advanced coders develop apps, and then try to code an app with only UI components by yourself (you can look on [dribbble](https://dribbble.com/shots/popular/mobile) for ui inspiration). Good luck!
 
 These are all the compiled resources, listed from more beginner-friendly to more advanced.
 
