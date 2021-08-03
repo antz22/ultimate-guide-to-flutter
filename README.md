@@ -283,19 +283,19 @@ MacOS
 Linux
 - [Flutter Docs - Linux Install](https://flutter.dev/docs/get-started/install/linux)
 
-Run 
-
-  flutter doctor
-
-To make sure your environment is all ready to go.
+Once finished, run this command in the terminal to make sure your environment is all ready to go.
+```console
+$ flutter doctor
+```
 
 Create a flutter project with the following command.
-
-  flutter create <project_name>
+```console
+$ flutter create <project_name>
+```
 
 The folder structure will look something like this. We will be putting all of our code in the 'lib' folder, and I'll explain the other folders later in the guide. For now, just follow along wiht the code in the guide and don't worry about project setup just yet.
 
-<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/project_structure.png">
+<img width="35%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/project_structure.png">
 
 Good job! Now that we have our environment set up, let's take a look at how apps are laid out in the Flutter framework.
 
@@ -856,7 +856,7 @@ Here's how folders are usually structured:
 
 As we saw before, lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
 
-<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/folder_structure.png">
+<img width="35%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/folder_structure.png">
 
 In the lib folder, you should split code up into screens, models, services, widgets, and constants. Main.dart will be your wrapper file.
 
@@ -882,7 +882,7 @@ Services is used for putting all the classes that contain any business logic. Th
 
 Widgets is used for putting all widgets you custom created that you use for multiple screens. For example, if you created your own Button widget that you want to use on both the login and sign_in screens, just put that Button file into the widgets folder.
 
-<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/example_folder_structure.png">
+<img width="35%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/example_folder_structure.png">
 
 ### Separate Business Logic from Frontend
 
