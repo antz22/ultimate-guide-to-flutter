@@ -457,10 +457,69 @@ That's the basics of state management. Take a look at the extra resources listed
 
 ## Good Practices
 
-- Abstract as much as possible (make more widgets)
-- Folder structure
-- Testing
-- Separate business logic (aka backend / stuff dealing with data) from frontend
+Good Practices are always important to keep in mind when developing any large projects in Flutter.
+
+1. Folder Structure
+
+To maintain a large project, make sure your folder structure is correctly organized.
+
+Here's how folders are usually structured:
+
+Lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
+
+PROJECT_DIRECTORY -> android
+                     assets
+                     ios
+                     lib     
+                     test
+                     web
+
+
+In the lib folder, you should split code up into screens, models, services, widgets, and constants. Main.dart will be your wrapper file.
+
+lib    ->   constants
+            models
+            screens
+            services
+            widgets
+            main.dart
+
+Constants is used for placing constants.dart, which usually defines ThemeData and color schemes for your app, to make it easier for your app to conform to a certain style. For example, I usually define kPrimaryColor and kSecondaryColor in the constants.dart file. You can also use a theme.dart file to create ThemeData objects.
+
+Models are the classes you want to create to make it easier to work with data in Flutter. For example, you might want to create a User class that has properties of 'username', 'nickname', 'age', etc. In the models folder, create and name your file based on what you would like your class to be called. If I wanted to make...
+    
+    class User {
+        String usernamename;
+        String nickname;
+        int age;
+    }
+
+Then I would name the file user.dart (if it is two words, simply use an underscore instead of a space -> food_item.dart).
+
+Screens is the folder where you will place most of your code - the UI code for all of your screens. To create a new screen, create a folder and name it the screen, and place your code in that subfolder. This way, all your screens will be different folders in the 'screens' folder. In your specific screen folder, name the main file (name_of_screen).dart.
+
+    screens ->  login -> login.dart
+                sign_in -> sign_in.dart
+
+If your screen has many components to it, create a components folder in the screen's directory.
+
+Services is used for putting all the classes that contain any business logic. These follow the same folder conventions as the models folder.
+
+Widgets is used for putting all widgets you custom created that you use for multiple screens. For example, if you created your own Button widget that you want to use on both the login and sign_in screens, just put that Button file into the widgets folder.
+
+2. Separate business logic (aka backend / stuff dealing with data) from frontend
+
+Business logic is essentially any code that doesn't directly have to do with the layout of the app. For example, if you had a login screen, the UI would be the Column, TextField, and ElevatedButton widgets. THe business logic would be how the user would sign in to the backend server you are using (for example, Firebase).
+
+It is generally a good idea to keep these separated so you don't mix backend / dealing with data and frontend, which can lead to messy and confusing code. If I wanted to look into the code for the product_details screen, why would I want to see how the product is dealt with on the backend? It's cleaner to separate the two paradigms.
+
+What this means for us is that we should place as much of the business logic / backend code in the 'services' folder as we can, and not in the 'screens' folder. I usually do this by defining an 'APIServices' class that has a number of methods that deals with the business logic.
+
+3. Abstract as much as possible (make more widgets)
+
+In Flutter, it is in your best interest to extract as much code as you can.
+
+4. Testing
 
 
 
@@ -488,6 +547,7 @@ Flutter App Tutorials
 
 Firebase
 
+- [Flutter & Firebase App Build](https://youtube.com/playlist?list=PL4cUxeGkcC9j--TKIdkb3ISfRbJeJYQwC)
 - [YouTube - Get to know Cloud Firestore](https://youtube.com/playlist?list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ)
 - [Flutter Firebase Authentication - The Clean Way](https://youtu.be/oJ5Vrya3wCQ)
 
@@ -499,6 +559,17 @@ State management
 - [Flutter Provider - Advanced Firebase Data Management](https://youtu.be/vFxk_KJCqgk)
 
 
-If this feels a little bit overwhelming, don't feel discouraged. It's never too late. Be glad that you are here in the first place!
+If this feels a little bit overwhelming, don't feel discouraged. Many times I was stuck, but once I understood a new concept I quickly made tons of progress. It's never too late. Be glad that you are here in the first place! 
 
 I hope you enjoyed this comprehensive guide!
+
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
