@@ -22,12 +22,32 @@
     </li>
     <li>
       <a href="#learning-flutter-ui">Learning Flutter UI</a>
+      <ul>
+        <li><a href="#widgets">Widgets</a></li>  
+        <li><a href="#layout">Layout</a></li>  
+        <li><a href="#formatting">Formatting</a></li>  
+        <li><a href="#stateless-widgets">Stateless Widgets</a></li>  
+        <li><a href="#stateful-widgets">Stateful Widgets</a></li>  
+        <li><a href="#null-safety">Null Safety</a></li>
+      </ul>
     </li>
     <li><a href="#learning-firebase">Learning Firebase</a></li>
-    <li><a href="#connecting-firebase-with-flutter">Connecting Firebase wth Flutter</a></li>
+    <li>
+      <a href="#connecting-firebase-with-flutter">Connecting Firebase wth Flutter</a>
+      <ul>
+        <li><a href="#streambuilder">StreamBuilder</a></li>
+        <li><a href="#futurebuilder">FutureBuilder</a></li>
+      </ul>
+    </li>
     <li><a href="#state-management">State Management</a></li>
     <li>
       <a href="#best-practices">Best Practices</a>
+      <ul>
+        <li><a href="#folder-structure">Folder Structure</a></li>
+        <li><a href="#separate-business-logic-from-frontend">Separate Business Logic from Frontend</a></li>
+        <li><a href="#abstract-as-much-as-possible-(make-more-widgets)">Abstract as much as possible (make more widgets)</a></li>
+        <li><a href="#testing">Testing</a></li>
+      </ul>
     </li>
     <li><a href="#helpful-resources">Helpful Resources</a></li>
   </ol>
@@ -502,7 +522,7 @@ Stateful widgets are instantiated in the same way as Stateless widgets are.
 Stateful widgets are very useful for dealing with anything related to business logic, interactive features, and listening to streams of data on the backend, as we'll see later.
 
 
-## Null Safety
+### Null Safety
 
 In recent versions of Flutter, null safety was introduced in order to greatly help developers in dealing with notorious null errors.
 
@@ -512,7 +532,7 @@ Flutter's null safety helps developers with fixing these issues by using powerfu
 
 In null safety, there are 3 important symbols to know about. The '?' symbol, the '!' symbol, and the '??' symbol.
 
-#### '?'
+### '?'
 
 If we declare a variable that we think might somehow take on a null value, we add the '?' operator to the end of the type declaration to remind us and the IDE to include strict null checking on that variable. Here's an example.
 
@@ -526,7 +546,7 @@ if (response != null) {
 }
 ```
 
-#### '!'
+### '!'
 
 If we declare a nullable type for a variable but we know for certain that it won't be null, we use the '!' operator at the end of the variable name. Note: try to avoid using this because it bypasses all the null safety checks performed by the IDE.
 
@@ -538,7 +558,7 @@ if (response!) {
 }
 ```
 
-#### '??'
+### '??'
 
 When we are assigning a value to a variable, we can check whether it is null or not and assign a value from there. If the value it is assigned is null, we can add the '??' operator and add a default value on the right, in case it is null.
 
@@ -597,6 +617,8 @@ More really good resources:
 
 Now that we know about the most important part of Firebase (the Firestore database), how do we get access to that data in Flutter?
 
+### StreamBuilder
+
 We can use a StreamBuilder for this purpose. A 'Stream' is essentially just a stream of data that we are constantly watching for changes in. One end of the stream is the Firestore database. The other end of the stream is our app. 
 
 Thus, when something changes in the Firestore database (say, a new product is added), that change gets reflected on our app by the StreamBuilder which notices that change, and rebuilds the widget in order to incorporate that change.
@@ -629,6 +651,8 @@ StreamBuilder(
 ```
 
 It might look complicated, but it really isn't. On one side you are accessing a stream of data, whether it be a collection or document, and you are building a widget that has access to that data through the 'snapshot' variable. If there are any changes that the StreamBuilder detects on Firestore's end, the widget will be rebuilt.
+
+### FutureBuilder
 
 StreamBuilders are great, but what about if you didn't need to listen to changes on Firestore's end? What if you just wanted to retrieve some information, say the price of the Macbook, and be done with it?
 
@@ -794,7 +818,7 @@ Services is used for putting all the classes that contain any business logic. Th
 
 Widgets is used for putting all widgets you custom created that you use for multiple screens. For example, if you created your own Button widget that you want to use on both the login and sign_in screens, just put that Button file into the widgets folder.
 
-### Separate business logic (aka backend / stuff dealing with data) from frontend
+### Separate Business Logic from Frontend
 
 Business logic is essentially any code that doesn't directly have to do with the layout of the app. For example, if you had a login screen, the UI would be the Column, TextField, and ElevatedButton widgets. THe business logic would be how the user would sign in to the backend server you are using (for example, Firebase).
 
