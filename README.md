@@ -1,5 +1,5 @@
 <p align="middle">
-    <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg">
+  <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/banner.svg">
 </p>
 
 # Ultimate Guide to App Development with Flutter
@@ -73,8 +73,8 @@ Dictionaries are specificed as the 'Map' type in dart. You have to specify the k
 
 ```dart
 Map<String, int> grades = {
-    'John': 99,
-    'Doe': 30,
+  'John': 99,
+  'Doe': 30,
 }
 ```
 
@@ -102,18 +102,18 @@ Functions are declared by specifying the return type, the name of the function, 
 
 ```dart
 void main() {
-    print('hello world');
+  print('hello world');
 }
 
 String hello(int reps) {
-    for (int i = 0; i < reps; i++) {
-        print('hello');
-    }
-    return 'complete';
+  for (int i = 0; i < reps; i++) {
+    print('hello');
+  }
+  return 'complete';
 }
 
 List<String> people() {
-    return ['John', 'Doe'];
+  return ['John', 'Doe'];
 }
 ```
 
@@ -125,8 +125,8 @@ For asynchronous functions, add the 'async' keyword between the parentheses and 
 
 ```dart
 Future<String> retrieveData() async {
-    response = await someAPICall(); // assuming the api call returns a string
-    return response;
+  response = await someAPICall(); // assuming the api call returns a string
+  return response;
 }
 ```
 
@@ -138,9 +138,9 @@ If statements are simply written as follows:
 bool someCondition=true;
 
 if (someCondition) {
-    print('someCondition is true');
+  print('someCondition is true');
 } else {
-    print('someCondition is false');
+  print('someCondition is false');
 }
 ```
 
@@ -153,7 +153,7 @@ List words = ['hello', 'world', '!'];
 
 // 1st way
 for (int i = 0; i < words.length; i++) {
-    print(words[i]);
+  print(words[i]);
 } 
 
 // 2nd way
@@ -161,7 +161,7 @@ words.forEach((word) => print(word));
 
 // 3rd way
 for (String word in words) {
-    print(word);
+  print(word);
 }
 ```
 
@@ -174,16 +174,16 @@ Classes can be created and used like this. Notice how the type of the object tha
 
 ```dart
 class Car {
-    String name;
-    int price;
-    bool isMadeByElonMusk;
+  String name;
+  int price;
+  bool isMadeByElonMusk;
 }
 
 void main() {
-    Car tesla == Car();
-    tesla.name = 'Model S';
-    tesla.price = 50000;
-    tesla.isMadeByElonMusk = true;
+  Car tesla == Car();
+  tesla.name = 'Model S';
+  tesla.price = 50000;
+  tesla.isMadeByElonMusk = true;
 }
 ```
 
@@ -191,26 +191,26 @@ Here's an example of how constructors and methods work.
 
 ```dart
 class Car {
-    Car(String name, int price, bool isMadeByElonMusk) {
-        this.name = name;
-        this.price = price;
-        this.isMadeByElonMusk = isMadeByElonMusk;
+  Car(String name, int price, bool isMadeByElonMusk) {
+    this.name = name;
+    this.price = price;
+    this.isMadeByElonMusk = isMadeByElonMusk;
+  }
+  String name;
+  int price;
+  bool isMadeByElonMusk;
+  
+  bool isExpensive() {
+    if (this.price > 30000) {
+      return true;
+    } else {
+      return false;
     }
-    String name;
-    int price;
-    bool isMadeByElonMusk;
-    
-    bool isExpensive() {
-        if (this.price > 30000) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  }
 }
 
 void main() {
-    Car tesla = Car('Model S', 50000, true);
+  Car tesla = Car('Model S', 50000, true);
 }
 ```
 
@@ -244,7 +244,7 @@ Widgets are also used for things more complicated than just displaying text or p
 
 ```dart
 Container(
-    child: Text('hello!' )
+  child: Text('hello!' )
 ),
 ```
 
@@ -252,19 +252,19 @@ Some more important layout widgets are the Row and Column widgets. These widgets
 
 ```dart
 Row(
-    children: [
-        Text('left text'),
-        Text('middle text'),
-        Text('right text'),
-    ],
+  children: [
+    Text('left text'),
+    Text('middle text'),
+    Text('right text'),
+  ],
 )
 
 Column(
-    children: [
-        Text('top text'),
-        Text('middle text'),
-        Text('bottom text'),
-    ],
+  children: [
+    Text('top text'),
+    Text('middle text'),
+    Text('bottom text'),
+  ],
 )
 ```
 
@@ -272,9 +272,9 @@ Some layout widgets are wrapped around every other widget we put onto the screen
 
 ```dart
 Scaffold(
-    body: Container(
-        child: Text('hi!'),
-    ),
+  body: Container(
+    child: Text('hi!'),
+  ),
 )
 ```
 
@@ -284,14 +284,14 @@ Another useful widget is the ListView.builder widget. The ListView.builder widge
 List<String> people = ['John', 'Doe', 'Jane'];
 
 ListView.builder(
-    itemCount: people.length, // 3
-    // index is the current index that the builder is iterating on. think of it like the 
-    // 'i' in the for loop,  for (int i = 0; i < whatever; i++) 
-    itemBuilder: (context, index) {
-        return Container(
-            child: Text(people[index]),
-        );
-    },
+  itemCount: people.length, // 3
+  // index is the current index that the builder is iterating on. think of it like the 
+  // 'i' in the for loop,  for (int i = 0; i < whatever; i++) 
+  itemBuilder: (context, index) {
+    return Container(
+      child: Text(people[index]),
+    );
+  },
 )
 ```
 
@@ -308,32 +308,32 @@ Adhering to the formatter will make your code much more readable both for yourse
 // weird code you might write totally without a formatter
 // not very good, is it?
 Column(children:[
-    Container
-    (child: Text
-    (
-        'hi!'
-    )),
-    Text(
-        'hi'
-    )
+  Container
+  (child: Text
+  (
+    'hi!'
+  )),
+  Text(
+    'hi'
+  )
 ]
 )
 
 // code you might write with the formatter, but without adhering to the formatting guidelines
 Column(children: [
-    Container(color: Color(0xFFFFFF), child: Text('hey there'), margin: EdgeInsets.all(5.0), padding: EdgeInsets.all(5.0)),
-    Text('hi')])
+  Container(color: Color(0xFFFFFF), child: Text('hey there'), margin: EdgeInsets.all(5.0), padding: EdgeInsets.all(5.0)),
+  Text('hi')])
 
 // code you write with the formatter, that adheres to the formatter
 Column(
-    children: [
-        Container(
-            color: Color(0xFFFFFF),
-            child: Text('hey there'),
-            margin: EdgeInsets.all(5.0),// add a trailing comma to the last parameter (margin)
-        ), // add a trailing comma to the Widget
-        Text('hi'), // add a trailing comma to the last child of the Column
-    ], // add a trialing comma to the children parameter
+  children: [
+    Container(
+      color: Color(0xFFFFFF),
+      child: Text('hey there'),
+      margin: EdgeInsets.all(5.0),// add a trailing comma to the last parameter (margin)
+    ), // add a trailing comma to the Widget
+    Text('hi'), // add a trailing comma to the last child of the Column
+  ], // add a trialing comma to the children parameter
 )
 ```
 
@@ -347,16 +347,16 @@ Stateless widgets are essentially widgets that don't change - they are static. O
 
 ```dart
 class ListOfStates extends StatelessWidget {
-    // this is the constructor, but don't worry about it right now
-    const ListOfStates({Key? key}) : super(key: key);
+  // this is the constructor, but don't worry about it right now
+  const ListOfStates({Key? key}) : super(key: key);
 
-    // @override is good practice to tell us that the following method (in this case,
-    // the build method) is being overriden from the default build method
-    @override
-    // this build function returns a Widget
-    Widget build(BuildContext context) {
-        return Container(color: Color(0xFFFFFFFF));
-    }
+  // @override is good practice to tell us that the following method (in this case,
+  // the build method) is being overriden from the default build method
+  @override
+  // this build function returns a Widget
+  Widget build(BuildContext context) {
+    return Container(color: Color(0xFFFFFFFF));
+  }
 }
 ```
 
@@ -366,18 +366,18 @@ If you would like to add parameters for your stateless widget (for example, maki
 
 ```dart
 class DisplayMessage extends StatelessWidget {
-    // add it to the constructor here after the key, as 'required this.<parameter>'
-    DisplayMessage({ Key? key, required this.message }) : super(key: key);
+  // add it to the constructor here after the key, as 'required this.<parameter>'
+  DisplayMessage({ Key? key, required this.message }) : super(key: key);
 
-    // initialize it as a 'final' variable (it won't change)
-    final String message
+  // initialize it as a 'final' variable (it won't change)
+  final String message
 
-    @override
-    Widget build(BuildContext context) {
-        return Container(
-            child: Text(message),
-        );
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text(message),
+    );
+  }
 }
 ```
 
@@ -385,15 +385,15 @@ This widget would then be instantiated in another parent widget like so:
 
 ```dart
 Scaffold(
-    body: Column(
-        children: [
-            ...
-            // instantiating the stateless widget we just created (which is in another file) 
-            // with string, the message we want to display
-            DisplayMessage(message: 'Hello there!'),
-            ...
-        ],
-    ),
+  body: Column(
+    children: [
+      ...
+      // instantiating the stateless widget we just created (which is in another file) 
+      // with string, the message we want to display
+      DisplayMessage(message: 'Hello there!'),
+      ...
+    ],
+  ),
 )
 ```
 
@@ -406,40 +406,40 @@ Note: whenever we want our stateful widget to react to any changes, we use the s
 
 ```dart
 class DisplayCount extends StatefulWidget {
-    const DisplayCount({Key? key}) : super(key: key); 
+  const DisplayCount({Key? key}) : super(key: key); 
 
-    @override
-    _DisplayCountState createState() => _DisplayCountState();
+  @override
+  _DisplayCountState createState() => _DisplayCountState();
 }
 
 class _DisplayCountState extends State<DisplayCount> {
 
-    // defining a variable, count, inside our widget
-    int count = 0;    
+  // defining a variable, count, inside our widget
+  int count = 0;    
 
-    @override
-    Widget build(BuildContext context) {
-        return Column(
-            children: [
-                // display the count as a string
-                Text(count.toString()),
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // display the count as a string
+        Text(count.toString()),
 
-                ElevatedButton(
-                    // the code that will execute when the function is pressed
-                    onPressed: () {
-                        // setState is called to signal to Flutter to rebuild the widget
-                        // count is incremented by 1, so the widget will be rebuilt with 
-                        // a new value displayed in the text widget above
-                        setState(() {
-                            count += 1;
-                        });
-                    },
-                    // the text displayed on the button
-                    child: Text('Click me to add +'),
-                ),
-            ],
-        );
-    }
+        ElevatedButton(
+          // the code that will execute when the function is pressed
+          onPressed: () {
+            // setState is called to signal to Flutter to rebuild the widget
+            // count is incremented by 1, so the widget will be rebuilt with 
+            // a new value displayed in the text widget above
+            setState(() {
+                count += 1;
+            });
+          },
+          // the text displayed on the button
+          child: Text('Click me to add +'),
+        ),
+      ],
+    );
+  }
 }
 ```
 
@@ -449,27 +449,27 @@ Constructors in stateful widgets are the same, but they are only declared in the
 
 ```dart
 class DisplayCount extends StatefulWidget {
-    const DisplayCount({Key? key, required this.message}) : super(key: key); 
+  const DisplayCount({Key? key, required this.message}) : super(key: key); 
 
-    final String message;
+  final String message;
 
-    @override
-    _DisplayCountState createState() => _DisplayCountState();
+  @override
+  _DisplayCountState createState() => _DisplayCountState();
 }
 
 class _DisplayCountState extends State<DisplayCount> {
-    ...
-    @override
-    Widget build(BuildContext context) {
-        return Column(
-            children: [
-                // refer to the 'message' as widget.message
-                Text(widget.message),
-                ...
-            ],
-        );
-    }
-    ...
+  ...
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        // refer to the 'message' as widget.message
+        Text(widget.message),
+        ...
+      ],
+    );
+  }
+  ...
 }
 ```
 
@@ -497,9 +497,9 @@ If we declare a variable that we think might somehow take on a null value, we ad
 String? response = await fetchSomeDataOrSomething(); // initializing a string wih a nullable type and assigning it to the return value of this function
 // if this function returns null, then response will be safely accounted for.
 if (response != null) {
-    print(response);
+  print(response);
 } else {
-    print('error');
+  print('error');
 }
 ```
 
@@ -511,7 +511,7 @@ If we declare a nullable type for a variable but we know for certain that it won
 bool? response = fetchSomeData(); // fetchSomeData() returns type bool
 // declaring that response will always be a valid value and not null (which is necessary for conditional statements)
 if (response!) { 
-    print('success');
+  print('success');
 }
 ```
 
@@ -539,20 +539,20 @@ Essentially, a Firebase Firestore database is created by making top-level 'colle
 
 Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Products collection might look:
 
-    Products    ->      Electronics     ->       Macbook Pro
-                        Plants                   Samsung phone
-                        Food                     Thinkpad X220
+  Products    ->      Electronics     ->       Macbook Pro
+                      Plants                   Samsung phone
+                      Food                     Thinkpad X220
 
 Where the Macbook, Samsung and Thinkpad are documents in the collection of Electronics. Macbook Pro might contain fields like:
 
-    id: 1
-    name: Macbook Pro
-    price: 1500
-    stock: 25
-    releaseDate: 2016
-    rating: 3.9
-    company: Apple
-    ...
+  id: 1
+  name: Macbook Pro
+  price: 1500
+  stock: 25
+  releaseDate: 2016
+  rating: 3.9
+  company: Apple
+  ...
 
 The thing about No-SQL databases is that you can create documents in the same collection without the same fields!! For example, the Samsung phone document might be missing the 'rating' field, but there wouldn't be any errors.
 
@@ -582,26 +582,26 @@ Here's the syntax:
 
 ```dart
 StreamBuilder(
-    // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document in the subcollection 'Electronics'
-    stream: FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').snapshots(),
-    // builder defines what will be built on the app using this 'snapshot' data (the stream data)
-    // Firestore collections are of type QuerySnapshot
-    // If we want to query one specific document, it is of type DocumentSnapshot
-    // Both are referred to as AsyncSnapshots because they are asynchronous snapshots
-    builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-        // check that there is data in the stream and that it has finished loading
-        if (snapshot.hasData) {
-            return Container(
-                // snapshot.data gives you access to all the fields in the document
-                // get the values of the fields by using square brackets and the 
-                // name of the field, like so
-                child: Text(snapshot.data['name'])
-            ),
-        }, else {
-            // if there's no data yet, show a loading sign
-            return CircularProgressIndicator();
-        }
-    },
+  // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document in the subcollection 'Electronics'
+  stream: FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').snapshots(),
+  // builder defines what will be built on the app using this 'snapshot' data (the stream data)
+  // Firestore collections are of type QuerySnapshot
+  // If we want to query one specific document, it is of type DocumentSnapshot
+  // Both are referred to as AsyncSnapshots because they are asynchronous snapshots
+  builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+    // check that there is data in the stream and that it has finished loading
+    if (snapshot.hasData) {
+      return Container(
+        // snapshot.data gives you access to all the fields in the document
+        // get the values of the fields by using square brackets and the 
+        // name of the field, like so
+        child: Text(snapshot.data['name'])
+      ),
+    }, else {
+      // if there's no data yet, show a loading sign
+      return CircularProgressIndicator();
+    }
+  },
 )
 ```
 
@@ -616,32 +616,32 @@ FutureBuilders take in an asynchronous function as a parameter, and a builder to
 ```dart
 // defining an async function that returns an int
 Future<int> retrieveMacbookPrice() async {
-    // PS here's how to retrieve a single document from Firestore - 
-    // in our case, the Macbook document
-    var document = await FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').get(),
-    // The data you get back will be a dictionary that maps keys (strings) to values (which have dynamic types)
-    Map<String, dynamic> macbookData = document.data();
+  // PS here's how to retrieve a single document from Firestore - 
+  // in our case, the Macbook document
+  var document = await FirebaseFirestore.instance.collection('Products').collection('Electronics').doc('Macbook Pro').get(),
+  // The data you get back will be a dictionary that maps keys (strings) to values (which have dynamic types)
+  Map<String, dynamic> macbookData = document.data();
 
-    int macbookPrice = macbookData['price'];
+  int macbookPrice = macbookData['price'];
 }
 
 FutureBuilder(
-    // builder will only build after this future is done executing
-    future: retrieveMacbookPrice(),
-    // the 'snapshot' here refers to what is returned from the future!
-    builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-        if (snapshot.hasData) {
-            // data from the snapshot is accessed like so
-            int price = snaphot.data['price']
-            return Container(
-                // convert int to string
-                child: Text(price.toString()),
-            );
-        } else {
-            // if there's no data yet, show a loading sign
-            return CircularProgressIndicator();
-        }
+  // builder will only build after this future is done executing
+  future: retrieveMacbookPrice(),
+  // the 'snapshot' here refers to what is returned from the future!
+  builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
+    if (snapshot.hasData) {
+      // data from the snapshot is accessed like so
+      int price = snaphot.data['price']
+      return Container(
+        // convert int to string
+        child: Text(price.toString()),
+      );
+    } else {
+      // if there's no data yet, show a loading sign
+      return CircularProgressIndicator();
     }
+  }
 )
 ```
 
@@ -662,8 +662,8 @@ A Provider is called a 'Provider' because it is a parent widget that 'provides' 
 
 ```dart
 Provider(
-    create: (context) => CartModel(),
-    child: MyApp(),
+  create: (context) => CartModel(),
+  child: MyApp(),
 )
 ```
 
@@ -690,11 +690,11 @@ One way to do it would be to nest Providers.
 
 ```dart
 Provider(
-    create: (context) => CartModel(),
-    child: Provider(
-        create: (context) => UserPreferences(),
-        child: MyApp(),
-    ),
+  create: (context) => CartModel(),
+  child: Provider(
+    create: (context) => UserPreferences(),
+    child: MyApp(),
+  ),
 )
 ```
 
@@ -704,11 +704,11 @@ MultiProvider allows us to define multiple 'providers' at the very top of the ap
 
 ```dart
 MultiProvider(
-    providers: [
-        Provider<CartModel>(create: (_) => CartModel()),
-        Provider<UserPreferences>(create: (_) => UserPreferences()),
-    ],
-    child: MyApp(),
+  providers: [
+    Provider<CartModel>(create: (_) => CartModel()),
+    Provider<UserPreferences>(create: (_) => UserPreferences()),
+  ],
+  child: MyApp(),
 )
 ```
 
@@ -729,22 +729,22 @@ Here's how folders are usually structured:
 
 Lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
 
-    PROJECT_DIRECTORY -> android
-                        assets
-                        ios
-                        lib     
-                        test
-                        web
+  PROJECT_DIRECTORY -> android
+                      assets
+                      ios
+                      lib     
+                      test
+                      web
 
 
 In the lib folder, you should split code up into screens, models, services, widgets, and constants. Main.dart will be your wrapper file.
 
-    lib    ->   constants
-                models
-                screens
-                services
-                widgets
-                main.dart
+  lib    ->   constants
+              models
+              screens
+              services
+              widgets
+              main.dart
 
 Constants is used for placing constants.dart, which usually defines ThemeData and color schemes for your app, to make it easier for your app to conform to a certain style. For example, I usually define kPrimaryColor and kSecondaryColor in the constants.dart file. You can also use a theme.dart file to create ThemeData objects.
 
@@ -752,9 +752,9 @@ Models are the classes you want to create to make it easier to work with data in
     
 ```dart
 class User {
-    String usernamename;
-    String nickname;
-    int age;
+  String usernamename;
+  String nickname;
+  int age;
 }
 ```
 
@@ -787,33 +787,29 @@ In Flutter, it is in your best interest to extract as much code as you can. What
 // products_screen.dart
 
 Scaffold(
-    // Column widget to lay out everything on the page vertically
-    body: Column(
+  // Column widget to lay out everything on the page vertically
+  body: Column(
+    children: [
+      // nested column widget dedicated to displaying electronics
+      Column(
         children: [
-            // nested column widget dedicated to displaying electronics
-            Column(
-                children: [
-                    Container(
-                        child: Text('Electronics'),
-                    ),
-                    Text('Macbook pro'),
-                    Text('iPhone'),
-                    Text('Galaxy Buds'),
-                ],
-            ),
-            // nested column widget dedicated to displaying food
-            Column(
-                children: [
-                    Container(
-                        child: Text('Food items'),
-                    ),
-                    Text('Jelly beans'),
-                    Text('Peanut Butter'),
-                    Text('Apples'),
-                ],
-            ),
+          Container(child: Text('Electronics')),
+          Text('Macbook pro'),
+          Text('iPhone'),
+          Text('Galaxy Buds'),
         ],
-    ),
+      ),
+      // nested column widget dedicated to displaying food
+      Column(
+        children: [
+          Container(child: Text('Food items')),
+          Text('Jelly beans'),
+          Text('Peanut Butter'),
+          Text('Apples'),
+        ],
+      ),
+    ],
+  ),
 )
 ```
 
@@ -823,56 +819,52 @@ This would be putting the 'Food items' section and 'Electronics' section into a 
 // screens/products/products_screen.dart
 
 Scaffold(
-    body: Column(
-        children: [
-            // Extracted widgets (put the widgets into their own file in the 'components' directory of this screen's directory)
-            ElectronicsSection(),
-            FoodItemsSection(),
-        ],
-    ),
+  body: Column(
+    children: [
+      // Extracted widgets (put the widgets into their own file in the 'components' directory of this screen's directory)
+      ElectronicsSection(),
+      FoodItemsSection(),
+    ],
+  ),
 )
 
 // screens/products/components/electronics_section.dart
 
 class ElectronicsSection extends StatelessWidget {
-    const ElectronicsSection({ Key? key }) : super(key: key);
+  const ElectronicsSection({ Key? key }) : super(key: key);
 
-    // same widgets, just put into the build function as a returned value
-    @override
-    Widget build(BuildContext context) {
-        return Column(
-            children: [
-                Container(
-                    child: Text('Electronics'),
-                ),
-                Text('Macbook pro'),
-                Text('iPhone'),
-                Text('Galaxy Buds'),
-            ],
-        );
-    }
+  // same widgets, just put into the build function as a returned value
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(child: Text('Electronics')),
+        Text('Macbook pro'),
+        Text('iPhone'),
+        Text('Galaxy Buds'),
+      ],
+    );
+  }
 }
 
 
 // screens/products/components/food_items_section.dart
 
 class FoodItemsSection extends StatelessWidget {
-    const FoodItemsSection({ Key? key }) : super(key: key);
+  const FoodItemsSection({ Key? key }) : super(key: key);
 
-    // same widgets, just put into the build function as a returned value
-    @override
-    Widget build(BuildContext context) {
-        return Column(
-            children: [
-                Container(
-                    child: Text('Food items'),
-                ),
-                Text('Jelly beans'),
-                Text('Peanut Butter'),
-                Text('Apples'),
-            ],
-        );
-    }
+  // same widgets, just put into the build function as a returned value
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(child: Text('Food items')),
+        Text('Jelly beans'),
+        Text('Peanut Butter'),
+        Text('Apples'),
+      ],
+    );
+  }
 }
 
 
