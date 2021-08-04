@@ -6,7 +6,7 @@
   <h2 align="center">:eight_spoked_asterisk: The Ultimate Guide to App Development with Flutter :eight_spoked_asterisk:</h2>
 
   <p align="center">
-    A complete and comprehensive guide to learning Flutter with explanations, examples, resources, and tips for Dart, Flutter, Firebase, State Management and more.
+    A complete and comprehensive guide to learning Flutter with explanations, tips, resources, and examples for Dart, Flutter, Firebase, State Management and more.
   </p>
 </p>
 <br />
@@ -63,15 +63,13 @@
 
 ## Introduction
 
-Flutter is a powerful and intuitive framework for building cross-platform mobile applications that uses the Dart programming language.
+Flutter is a powerful and intuitive framework for building beautiful, cross-platform mobile applications that uses the Dart programming language.
 
-This essentially means that Flutter can be used to write one codebase for an app that runs on both iOS and Android.
+This essentially means that Flutter can be used to write one codebase for an app that runs natively on both iOS and Android.
 
-Dart is a language that is similar to languages such as Java and Javascript, so having a bit of experience in these languages will help in learning Flutter.
-
-Learning Flutter is a little messy due to how new the language is - 
-- this means that the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
-- this also means that there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
+With all the hype around Flutter and mobile app development, learning Flutter is both a valuable skill and a gratifying endeavor in its own right. However, the path to learning Flutter is a little unclear due to how new the language is.
+- the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
+- there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
 
 This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
 
