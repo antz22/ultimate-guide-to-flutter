@@ -12,7 +12,8 @@
 <br />
 
 <details open="open">
-  <summary><h3 style="display: inline-block">Table of Contents</h3></summary>
+  <!-- <summary><h3>Table of Contents</h3></summary> -->
+  <summary><h4 style="display: inline-block">Table of Contents</h4></summary>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#getting-started">Getting Started</a></li>
