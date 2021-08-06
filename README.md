@@ -241,7 +241,7 @@ class Car {
 }
 
 void main() {
-  Car tesla == Car();
+  Car tesla = Car();
   tesla.name = 'Model S';
   tesla.price = 50000;
   tesla.isMadeByElonMusk = true;
