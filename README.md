@@ -91,7 +91,7 @@ Once you have your environment set up, let's move on!
 
 Dart is a language developed by Google that is the backbone to the flutter framework. It is the language you will be using when you code up apps with the Flutter framework.
 
-If you have never coded before or have less experience with programming, I recommend you take a look at this excellent tutorial from Mike Dane on YouTube. (PS don't sit through the whole thing all at once! Spend some time thinking about programming concepts in your subconscious mind while you take breaks or do other things)
+If you have never coded before or have less experience with programming, I recommend you take a look at this excellent tutorial from Mike Dane on YouTube (PS don't sit through the whole thing all at once! Spend some time thinking about programming concepts in your subconscious mind while you take breaks or do other things).
 - [Dart Programming in 4 hours | Full beginners tutorial](https://youtu.be/5xlVP04905w)
 
 If you have experience with languages like javavscript or java, here are the basics of dart.
@@ -118,7 +118,7 @@ bool isCool = true;
 List<String> = ['foo', 'bar'];
 ```
 
-Dictionaries are specificed as the 'Map' type in dart. You have to specify the key type and the value type, like as follows.
+Dictionaries (which map keys to values) are specificed as the 'Map' type in dart. You have to specify the key type and the value type, like as follows.
 
 ```dart
 Map<String, int> grades = {
@@ -131,7 +131,7 @@ You will get an error if you assign an incompatible type to the same variable.
     
 ```dart
 String foo = 'foo';
-foo = ['bar']; // ERROR
+foo = 2; // ERROR
 ```
     
 You can use 'var' and 'dynamic' to make a variable type dynamic, but it is usually not a good idea to do this, as it could end up in frustrating errors down the line.
@@ -142,7 +142,7 @@ Additionally, dart has a unique 'final' and 'const' operator that can be used fo
 final String name;
 ```
 
-The 'const' keyword is a little more of a specific use case - it makes the variable constant from copile-time only. We'll see what that means later, but for now, don't worry about 'const.'
+The 'const' keyword is a little more of a specific use case - it makes the variable constant from compile-time only. It will be useful later down the line for the Flutter framework, but for now, don't worry about 'const.'
 
     
 ### Functions
@@ -150,10 +150,12 @@ The 'const' keyword is a little more of a specific use case - it makes the varia
 Functions are declared by specifying the return type, the name of the function, and the parameters within paranetheses. Void is used to specify the return type of nothing is returned. 
 
 ```dart
+// doesn't return anything but still executes some code
 void main() {
   print('hello world');
 }
 
+// prints 'hello' but also returns the string 'complete'
 String hello(int reps) {
   for (int i = 0; i < reps; i++) {
     print('hello');
@@ -161,16 +163,19 @@ String hello(int reps) {
   return 'complete';
 }
 
+// returns a list of strings (List<String>)
 List<String> people() {
   return ['John', 'Doe'];
 }
 ```
 
-Asynchronous functions are functions that can execute different commands at the same time - asynchronously. An example of how this would be useful is in calling APIs. If our function calls an API and assigns a variable to the API's response but our widget is waiting for this function to finish in order to build, we might need to make this function asynchronous, allowing it to run in the background (at the same time), letting other commands (like the building of the widgets) after the API call to run in the meantime. 
+Asynchronous functions are functions that can execute different commands at the same time - asynchronously. 
 
-If we ever need our function to wait for some line of code to finish before we continue, we simply precede the code with the keyword, 'await'.
+An example of how this would be useful is in calling APIs (basically, trying to retrieve some sort of useful information or data that was programmed by someone else, from the web). If our function calls an API and assigns a variable to the API's response, but our entire App is waiting for that function to finish executing in order to do something, then it isn't very efficient. If we make this function asynchronous, the function calling the API can then execute at the same time that the App allows other functions to execute, or while the App does something else.
+
+Within an asynchronous function, if we ever need our function to wait for some line of code to finish before we continue, we simply precede the code with the keyword, 'await'.
     
-For asynchronous functions, add the 'async' keyword between the parentheses and the curly braces, and enclose the return type in 'Future<return type>'.
+For asynchronous functions in dart, add the 'async' keyword between the parentheses and the curly braces, and enclose the return type in 'Future<[return type]>'.
 
 ```dart
 Future<String> retrieveData() async {
@@ -184,7 +189,7 @@ Future<String> retrieveData() async {
 If statements are simply written as follows:
 
 ```dart
-bool someCondition=true;
+bool someCondition = true;
 
 if (someCondition) {
   print('someCondition is true');
@@ -201,14 +206,21 @@ For loops are very important in all programming languages, and there are a few w
 List words = ['hello', 'world', '!'];
 
 // 1st way
+// declare an int i, increment it by 1 until it is no longer 
+// less than words.length (3 in this case)
 for (int i = 0; i < words.length; i++) {
   print(words[i]);
 } 
 
 // 2nd way
+// for each element in word, dart will take that element (in this case, a string, word)
+// and will allow you to execute code using that element (here, we just print it out)
+// the rocket notation (=>) allows us to write only a single statement to execute
+// on the right side. otherwise, we would do (word) { print('hey!'); print(word); }
 words.forEach((word) => print(word));
 
 // 3rd way
+// very similar to the 2nd way but a different syntax
 for (String word in words) {
   print(word);
 }
@@ -259,7 +271,10 @@ class Car {
 }
 
 void main() {
+  // instantiate the class by using its constructor
   Car tesla = Car('Model S', 50000, true);
+  // returns true by using the Car class's method, isExpensive, because tesla.price = 50,000
+  bool isCarExpensive = tesla.isExpensive();
 }
 ```
 
@@ -277,7 +292,7 @@ Now that you know some of the basics of the dart programming language, let's tak
 
 ### Installation
 
-The installation process can be a bit tricky for some users depending on the OS, but it isn't too bad. Follow these resources to install Flutter and the necessary tools depending on your OS (in addition to Flutter, you will also need an emulator / virtual phone in order to test your apps).
+The installation process can be a bit tricky for some users depending on the OS, but it isn't too bad. Follow these resources to install Flutter and the necessary tools for your OS (in addition to Flutter, you will also need an emulator / virtual phone in order to test your apps).
 
 Windows
 - [Flutter Docs - Windows Install](https://flutter.dev/docs/get-started/install/windows)
@@ -307,11 +322,12 @@ Good job! Now that we have our environment set up, let's take a look at how apps
 
 ### Widgets
 
-Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework.
+Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework. Widgets are also quite similar to HTML elements like 'p' (for paragraph), 'h1' (for header 1), etc.
 
 Widgets are essentially the basic elements of an app that Flutter has packaged into components for us. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
 
 ```dart
+// displays the text on the app screen
 Text('Some string here');
 ```
 
@@ -386,7 +402,7 @@ Each widget will have a number of parameters specific to that widget that you ca
 
 Usually, you can also pass in all of your styles to the widget through the parameter.
 
-Many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. the 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
+Many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. The 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
 
 In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget.
 
@@ -426,7 +442,8 @@ In Column widgets, you might need to vertically align your objects to the center
 
 ```dart
 Column(
-  // argument passed in must use the MainAxisAlignment object - can you start to see the practices and conventions Flutter uses here?
+  // argument passed in must use the MainAxisAlignment object 
+  // can you start to see the practices and conventions Flutter everywhere?
   mainAxisAlignment: MainAxisAlignment.center,
   children: [
     Text('top text'),
@@ -438,7 +455,7 @@ Column(
 
 Other properties of Column include crossAxisAlignment, mainAxisSize, and more. Chances are, if you feel like you need to do something to style your widget, you just need to Google the properties of that widget, or Google how to accomplish what you need to find which property to use.
 
-The amount of properties and classes you need might seem a bit daunting to learn about, but over time it will become intuitive for you! 
+The amount of properties and classes you need might seem a bit daunting to learn about, but over time it will become intuitive for you (plus, Google is your best friend)! 
 
 ### Formatting
 
@@ -486,7 +503,7 @@ Simply just add a trailing comma to your widgets and their parameters, hit save,
 
 ### Stateless Widgets
 
-Stateless widgets are essentially widgets that don't change - they are static. One example of a stateless widget would a page that displays the names of the states in the US in a list. Let's take a look at a more simple example by creating a stateless widget that simply returns a white container. Here's the syntax for defining a stateless widget.
+Stateless widgets are essentially widgets that don't change - they are static. One example of a stateless widget would be a page that displays the names of the states in the US in a list. Let's take a look at a more simple example by creating a stateless widget that simply returns a white container. Here's the syntax for defining a stateless widget.
 
 ```dart
 class ListOfStates extends StatelessWidget {
@@ -545,7 +562,7 @@ Scaffold(
 
 Stateful widgets are widgets that can react to certain changes and then be rebuilt. This is useful if we want our app to be interactive. For example, let's say we want to have a counter in our app. Whenever the user presses a '+' button, we want the app to display an increase in a variable we define, 'count'. Here's how.
 
-Note: whenever we want our stateful widget to react to any changes, we use the setState(() {}) method.
+Note: whenever we want our stateful widget to react to any changes (which requires Flutter to rebuild the page), we use the setState(() {}) method.
 
 ```dart
 class DisplayCount extends StatefulWidget {
@@ -568,7 +585,10 @@ class _DisplayCountState extends State<DisplayCount> {
         Text(count.toString()),
 
         ElevatedButton(
-          // the code that will execute when the function is pressed
+          // the text displayed on the button
+          child: Text('Click me to add +'),
+
+          // the code that will execute when the button is pressed
           onPressed: () {
             // setState is called to signal to Flutter to rebuild the widget
             // count is incremented by 1, so the widget will be rebuilt with 
@@ -577,8 +597,6 @@ class _DisplayCountState extends State<DisplayCount> {
                 count += 1;
             });
           },
-          // the text displayed on the button
-          child: Text('Click me to add +'),
         ),
       ],
     );
@@ -588,7 +606,7 @@ class _DisplayCountState extends State<DisplayCount> {
 
 We also have access to IDE snippets for stateful widgets too. Just type in stful.
 
-Constructors in stateful widgets are the same, but they are only declared in the DisplayCount widget and not the _DisplayCountState widget. In the _DisplayCountState widget where you will be putting your code, you can refer to the variable as widget.<variable>.
+Constructors in stateful widgets are the same, but they are only declared in the DisplayCount widget and not the _DisplayCountState widget. In the _DisplayCountState widget where you will be putting your code, you can refer to the variable as (widget.[variable]).
 
 ```dart
 class DisplayCount extends StatefulWidget {
@@ -606,7 +624,7 @@ class _DisplayCountState extends State<DisplayCount> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // refer to the 'message' as widget.message
+        // refer to the 'message' attribute defined above as widget.message
         Text(widget.message),
         ...
       ],
@@ -628,7 +646,7 @@ In recent versions of Flutter, null safety was introduced in order to greatly he
 
 Essentially, if something like a String is declared and is supposed to be assigned a valid value like 'Hi!', in the case that it somehow is assigned a null value (basically, assigned a value of nothing), then all sorts of problems start to happen - some parts might start missing text, functionalities, etc.
 
-Flutter's null safety helps developers with fixing these issues by using powerful IDE features that force developers to be more strict with null checking. This means that developers have to account for the situations in which the variables they declare might take on null values.
+Flutter's null safety helps developers fix these issues by using powerful IDE features that force developers to be more strict with null checking. This means that developers have to account for the situations in which the variables they declare might take on null values.
 
 In null safety, there are 3 important symbols to know about. The '?' symbol, the '!' symbol, and the '??' symbol.
 
@@ -637,8 +655,11 @@ In null safety, there are 3 important symbols to know about. The '?' symbol, the
 If we declare a variable that we think might somehow take on a null value, we add the '?' operator to the end of the type declaration to remind us and the IDE to include strict null checking on that variable. Here's an example.
 
 ```dart
-String? response = await fetchSomeDataOrSomething(); // initializing a string wih a nullable type and assigning it to the return value of this function
-// if this function returns null, then response will be safely accounted for.
+// initializing a string wih a nullable type and assigning it to the 
+// return value of this function, fetchSomeDataOrSomething()
+String? response = await fetchSomeDataOrSomething(); 
+// in the case that the function returned something null and response has a null value,
+// it is now safely accounted for with this conditional statement
 if (response != null) {
   print(response);
 } else {
@@ -651,10 +672,13 @@ if (response != null) {
 If we declare a nullable type for a variable but we know for certain that it won't be null, we use the '!' operator at the end of the variable name. Note: try to avoid using this because it bypasses all the null safety checks performed by the IDE.
 
 ```dart
-bool? response = fetchSomeData(); // fetchSomeData() returns type bool
-// declaring that response will always be a valid value and not null (which is necessary for conditional statements)
-if (response!) { 
-  print('success');
+// fetchSomeData() returns type bool
+bool? response = fetchSomeData(); 
+// declaring that response will always be a valid value and not null
+if (response! == True) { 
+  print('function has returned true');
+} else {
+  print('function has returned false');
 }
 ```
 
@@ -663,26 +687,31 @@ if (response!) {
 When we are assigning a value to a variable, we can check whether it is null or not and assign a value from there. If the value it is assigned is null, we can add the '??' operator and add a default value on the right, in case it is null.
 
 ```dart
-String? something = fetchSomething();
-String response = something ?? 'defaultValue';
+String? response = fetchSomething();
+// if response is not null, the 'something' variable will take on the value of response'
+// if response is null, the 'something' variable with take on the value on the right side
+String something = response ?? 'defaultValue';
 ```
     
 
 ## Learning Firebase
 
-Since Flutter was developed by Google and Firebase was developed by Google (specifically, for app developers), Flutter and Firebase work very well with each other as frontend and backend tools.
+Since Flutter was developed by Google and Firebase was also developed by Google (which was made specifically for app developers), Flutter and Firebase work very well with each other as frontend and backend tools.
 
-The main backend stuff will be using a database, which Firebase provides with its Cloud Firestore database. The basic structure of Firestore databases is quite simple, but is very different from conventional, realtime databases like with SQL. Instead, Firestore is a No-SQL database.
+The main backend of most projects will be using a database, which Firebase provides with its Cloud Firestore database. The basic structure of Firestore databases is quite simple, but is very different from conventional, realtime databases like with SQL. Instead, Firestore is a No-SQL database.
 
 This series is extremely good on getting familiar with the structure of Firebase, so please take a look. Episodes 1, 2, and 4 are particularly important.
 
 [Get to know Cloud Firestore](https://youtube.com/playlist?list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ)
 
-Essentially, a Firebase Firestore database is created by making top-level 'collections' which can be things like 'Users', 'Messages', 'Products', etc. These collections can either have subcollections (Products -> Electronics), or they can have documents. 
+Essentially, a Firebase Firestore database is created by making top-level 'collections' which can be things like 'Users', 'Messages', 'Products', etc. These collections can have documents in them. 
 
-Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Macbook Pro document in the Products collection might look: (I'm accessing a Cloud Firestore database through the [Firebase Console](https://console.firebase.google.com/) on a dummy project I created)
+Documents are specific instances of its parent collection, which can be assigned a number of 'fields' with corresponding values. For example, here's how the Macbook Pro document in the Products collection might look: 
 
+left side: collections, middle: documents of the collection, right: fields in this document
 <img width="80%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/firestore.png">
+
+Note: I'm accessing a Cloud Firestore database through the [Firebase Console](https://console.firebase.google.com/) on a dummy project I created
 
 The thing about No-SQL databases is that you can create documents in the same collection without the same fields!! For example, the 'Pencil' document might be missing the 'rating' field, but there wouldn't be any errors.
 
@@ -692,7 +721,7 @@ Billing in Firestore is charged not by the size of the database, but by the numb
 
 If you needed to load all the 'Food' collection's products, Firebase would charge you 1 read per every document in the collection.
 
-However, Firebase is quite generous with it's limits. But, if you would like to take your app to production (put it into the real world), it's best to be wary of how billing works in order to optimize your database calls.
+However, Firebase is quite generous with its limits. But, if you would like to take your app to production (put it into the real world), it's best to be wary of how billing works in order to optimize your database calls.
 
 Check the [Firebase pricing page](https://firebase.google.com/pricing) to learn about the limits for the free tier.
 
@@ -708,17 +737,17 @@ Now that we know about the most important part of Firebase (the Firestore databa
 
 We can use a StreamBuilder for this purpose. A 'Stream' is essentially just a stream of data that we are constantly watching for changes in. One end of the stream is the Firestore database. The other end of the stream is our app. 
 
-Thus, when something changes in the Firestore database (say, a new product is added), that change gets reflected on our app by the StreamBuilder which notices that change, and rebuilds the widget in order to incorporate that change.
+Thus, when something changes in the Firestore database (say, a new product is added), that change goes down the data stream and gets noticed by our Flutter app. Once that change is noticed, the StreamBuilder widget rebuilds itself in order to incorporate that change (the new product now appears on our app).
 
 Here's the syntax:
 
 ```dart
 StreamBuilder(
-  // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document in the subcollection 'Electronics'
+  // gets an instance of a Firestore database and retrieves 'snapshots' of the Macbook Pro document
   stream: FirebaseFirestore.instance.collection('Products').doc('Macbook Pro').snapshots(),
   // builder defines what will be built on the app using this 'snapshot' data (the stream data)
   // Firestore collections are of type QuerySnapshot
-  // If we want to query one specific document, it is of type DocumentSnapshot
+  // Firestore documents are of type DocumentSnapshot
   // Both are referred to as AsyncSnapshots because they are asynchronous snapshots
   builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
     // check that there is data in the stream and that it has finished loading
@@ -741,26 +770,27 @@ It might look complicated, but it really isn't. On one side you are accessing a 
 
 ### FutureBuilder
 
-StreamBuilders are great, but what about if you didn't need to listen to changes on Firestore's end? What if you just wanted to retrieve some information, say the price of the Macbook, and be done with it?
+StreamBuilders are great, but what about if you didn't need to listen to changes on Firestore's end? What if you just wanted to retrieve some information, say the price of the Macbook, and be done with it (you might know that the values won't change)?
 
 We can do that with a FutureBuilder.
 
-FutureBuilders take in an asynchronous function as a parameter, and a builder to build a widget tree once that function has finished executing. In our example, our asynchronous function or 'future' (as the FutureBuilder calls it) would be retrieving the price of the Macbook, and our builder would be the widgets displaying that price.
+FutureBuilders take in an asynchronous function as a parameter, and a builder to build something once that function has finished executing (similar to the StreamBuilder). In our example, our asynchronous function or 'future' (as the FutureBuilder calls it) would be retrieving the price of the Macbook, and our builder would be the widgets displaying that price.
 
 ```dart
 // defining an async function that returns an int
 Future<int> retrieveMacbookPrice() async {
   // PS here's how to retrieve a single document from Firestore - 
   // in our case, the Macbook document
-  var document = await FirebaseFirestore.instance.collection('Products').doc('Macbook Pro').get(),
-  // The data you get back will be a dictionary that maps keys (strings) to values (which have dynamic types)
+  var document = await FirebaseFirestore.instance.collection('Products').doc('Macbook Pro').get();
+  // The data you get back (the document and its fields) will be a dictionary that maps 
+  // keys (type String) to values (type dynamic)
   Map<String, dynamic> macbookData = document.data();
 
   int macbookPrice = macbookData['price'];
 }
 
 FutureBuilder(
-  // builder will only build after this future is done executing
+  // builder will only build after this 'future' function is done executing
   future: retrieveMacbookPrice(),
   // the 'snapshot' here refers to what is returned from the future!
   builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
@@ -786,13 +816,13 @@ Whew, That was a lot! But guess what... Now that you know about how Firebase, Fu
 
 State management is a very important concept in Flutter that goes like this:
 
-Say you want to make an app that keeps track of your user's profile and information. After they log in with their username and password, you want to display their username in every page of the app as a greeting (for example, to say 'Hello, [name]!'). How would you do this?
+Say you want to make an app that keeps track of your user's profile and information. After they log in with their username and password, you want to display their username in every page of the app as a greeting (for example, to say 'Hello, [name]!'). How would you do this? How do you pass around the user's values of 'username' and 'password' throughout the whole app?
 
 You could pass the username as a parameter for all the stateless and stateful widgets that make up the different pages. But in reality, you want something that holds that username value that you can access across all screens / pages. 
 
-This can be done using a Provider, a built in state management solution.
+This can be done using a 'Provider' widget, a built in state management solution.
 
-A Provider is called a 'Provider' because it is a parent widget that 'provides' a value / entity to pass down to the child widget, so that the child widget has access to everything from the value/entity. In our example, if we had a 'Cart' class that we wanted to access in child widgets, it would look something like this:
+A Provider is called a 'Provider' because it is a parent widget that 'provides' a value to pass down to the child widget, so that the child widget has access to everything from the value / entity. In our example, if we had a 'Cart' class that we wanted to access in child widgets, it would look something like this:
 
 ```dart
 Provider(
@@ -816,7 +846,7 @@ context.watch<CartModel>().removeAllItems();
 context.read<CartModel>().removeAllItems();
 ```
 
-This calls Provider to look at the model that is of type CartModel, and calls the method removeAllItems(). In the 2nd way, the object of type CartModel (whatever is between < >) is instantianted by the following parentheses (context.read< >()).
+This calls Provider to look at the model that is of type CartModel, and calls the method removeAllItems(). In the 2nd way, the object of type CartModel (whatever is between < >) is instantianted by parentheses -> context.read< >().
 
 What if we wanted to access another piece of data that requires state management - say, the user's preferences for their color theme in the app? We could create a class called 'UserPreferences', but how would we have access to it on top of the CartModel class?
 
@@ -834,7 +864,7 @@ Provider(
 
 So we would have access to both the UserPreferences model and CartModel in MyApp. But you can probably tell that this gets unwieldly, fast, right? That's where MultiProvider comes into play. 
 
-MultiProvider allows us to define multiple 'providers' at the very top of the app (main.dart), where ALL the child widgets have access to each of the providers.
+The 'MultiProvider' widget allows us to define multiple 'providers' at the very top of the app (main.dart), where ALL the child widgets have access to each of the providers.
 
 ```dart
 MultiProvider(
@@ -861,7 +891,7 @@ To maintain a large project, make sure your folder structure is correctly organi
 
 Here's how folders are usually structured:
 
-As we saw before, lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in the assets folder, which you can create.
+As we saw before, lib is where you will put all your flutter code. Flutter then converts its code into android and ios code to make native apps, which can be found in the android and ios folders. Any images, svgs, or pictures you use should be placed in an 'assets' folder, which you have to create.
 
 <img width="35%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/folder_structure.png">
 
@@ -893,7 +923,7 @@ Widgets is used for putting all widgets you custom created that you use for mult
 
 ### Separate Business Logic from Frontend
 
-Business logic is essentially any code that doesn't directly have to do with the layout of the app. For example, if you had a login screen, the UI would be the Column, TextField, and ElevatedButton widgets. THe business logic would be how the user would sign in to the backend server you are using (for example, Firebase).
+Business logic is essentially any code that doesn't directly have to do with the layout of the app. For example, if you had a login screen, the UI would be the Column, TextField, and ElevatedButton widgets. The business logic would be how the user would sign in to the backend server you are using (for example, Firebase).
 
 It is generally a good idea to keep these separated so you don't mix backend / dealing with data and frontend, which can lead to messy and confusing code. If I wanted to look into the code for the product_details screen, why would I want to see how the product is dealt with on the backend? It's cleaner to separate the two paradigms.
 
@@ -1047,7 +1077,7 @@ I hope you enjoyed this comprehensive guide!
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions to improve the quality of this guide are welcome and greatly appreciated!
 
 1. Fork the Project
 2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
