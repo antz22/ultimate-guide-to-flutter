@@ -368,6 +368,7 @@ Column(
 ```
 
 Left: Row
+<br />
 Right: Column
 
 <p>
@@ -388,6 +389,7 @@ Scaffold(
 Note: the Scaffold applies basic styling to the page, like making the background color white, making the text black, making a default font size, etc.
 
 Left: with Scaffold
+<br />
 Right: without Scaffold
 
 <p>
@@ -482,6 +484,7 @@ Column(
 ```
 
 Left: without MainAxisAlignment.center
+<br />
 Right: with MainAxisAlignment.center (as in the code example above)
 
 <p>
