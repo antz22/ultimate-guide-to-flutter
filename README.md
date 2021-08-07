@@ -6,7 +6,7 @@
   <h2 align="center">:eight_spoked_asterisk: The Ultimate Guide to App Development with Flutter :eight_spoked_asterisk:</h2>
 
   <p align="center">
-    A complete and comprehensive guide to learning Flutter with explanations, tips, resources, and examples for Dart, Flutter, Firebase, State Management and more.
+    A complete and comprehensive guide to learning Flutter with explanations, screenshots, tips, resources, and examples for Dart, Flutter, Firebase, State Management and more.
   </p>
 </p>
 <br />
@@ -71,7 +71,7 @@ With all the hype around Flutter and mobile app development, learning Flutter is
 - the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
 - there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
 
-This guide compiles tutorials, tips, examples, and resources to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
+This guide compiles tutorials, tips, examples (with screenshots), and resources to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
 
 
 ## Getting Started
@@ -367,11 +367,12 @@ Column(
 )
 ```
 
-Left: Row, Right: Column
+Left: Row
+Right: Column
 
 <p>
   <img width="60%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/row_widget.png">
-  <img width="40%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
+  <img width="30%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
 </p>
 
 Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget is usually used to lay out or 'scaffold' the screen for us, and it is used like this:
@@ -384,7 +385,10 @@ Scaffold(
 )
 ```
 
-Left: with Scaffold, Right: without Scaffold
+Note: the Scaffold applies basic styling to the page, like making the background color white, making the text black, making a default font size, etc.
+
+Left: with Scaffold
+Right: without Scaffold
 
 <p>
   <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_with.png">
@@ -477,7 +481,8 @@ Column(
 )
 ```
 
-Left: without MainAxisAlignment.center, Right: with MainAxisAlignment.center (as in the code example above)
+Left: without MainAxisAlignment.center
+Right: with MainAxisAlignment.center (as in the code example above)
 
 <p>
   <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_start.png">
