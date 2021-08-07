@@ -370,8 +370,8 @@ Column(
 Left: Row, Right: Column
 
 <p>
-  <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/row_widget.png">
-  <img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
+  <img width="60%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/row_widget.png">
+  <img width="40%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
 </p>
 
 Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget is usually used to lay out or 'scaffold' the screen for us, and it is used like this:
@@ -385,8 +385,11 @@ Scaffold(
 ```
 
 Left: with Scaffold, Right: without Scaffold
-<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_with.png">
-<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_without.png">
+
+<p>
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_with.png">
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_without.png">
+</p>
 
 Another useful widget is the ListView.builder widget. The ListView.builder widget takes in two main arguments - the itemCount (how many list items to build), and the itemBuilder (which will return what is actually built). Here's what it looks like.
 
@@ -476,8 +479,10 @@ Column(
 
 Left: without MainAxisAlignment.center, Right: with MainAxisAlignment.center (as in the code example above)
 
-<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_start.png">
-<img src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_center.png">
+<p>
+  <img width="45%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_start.png">
+  <img  width="45%"src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_center.png">
+</p>
 
 
 Other properties of Column include crossAxisAlignment, mainAxisSize, and more. Chances are, if you feel like you need to do something to style your widget, you just need to Google the properties of that widget, or Google how to accomplish what you need to find which property to use.
