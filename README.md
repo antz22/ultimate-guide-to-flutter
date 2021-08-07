@@ -37,6 +37,7 @@
         <li><a href="#stateless-widgets">Stateless Widgets</a></li>  
         <li><a href="#stateful-widgets">Stateful Widgets</a></li>  
         <li><a href="#null-safety">Null Safety</a></li>
+        <li><a href="#more-resources">More Resources</a></li>
       </ul>
     </li>
     <li><a href="#learning-firebase">Learning Firebase</a></li>
@@ -58,6 +59,7 @@
       </ul>
     </li>
     <li><a href="#helpful-resources">Helpful Resources</a></li>
+    <li><a href="#contributing">Contributing</a></li>
   </ol>
 </details>
 
@@ -94,7 +96,7 @@ Dart is a language developed by Google that is the backbone to the flutter frame
 If you have never coded before or have less experience with programming, I recommend you take a look at this excellent tutorial from Mike Dane on YouTube (PS don't sit through the whole thing all at once! Spend some time thinking about programming concepts in your subconscious mind while you take breaks or do other things).
 - [Dart Programming in 4 hours | Full beginners tutorial](https://youtu.be/5xlVP04905w)
 
-If you have experience with languages like javavscript or java, here are the basics of dart.
+With that said, here are the basics of dart.
 
 Outline:
 - [Variables](#variables)
@@ -147,7 +149,7 @@ The 'const' keyword is a little more of a specific use case - it makes the varia
     
 ### Functions
 
-Functions are declared by specifying the return type, the name of the function, and the parameters within paranetheses. Void is used to specify the return type of nothing is returned. 
+Functions are declared by specifying the return type, the name of the function, and the parameters within paranetheses. Void is used to specify the return type if nothing is returned. 
 
 ```dart
 // doesn't return anything but still executes some code
@@ -231,6 +233,14 @@ Pretty cool!
 
 ### Classes, Objects, and Constructors
 
+Classes are essentially blueprints, or templates, for creating your own data type in your programs. For example, if you wanted to write programs about cars, it would be very difficult to do so using the primitive data types of String, int, bool, etc. 
+
+Using classes, we can create our own data types or models by defining a class, and its attributes. These attributes are of primitive data types, but the resulting class allows us to write more complex code in a simpler manner.
+
+When we need to create a specific instance of a class (i.e. we want to use the blueprint to actually create a car), we 'instantiate' it with the attributes we want, and the result is called an Object. 
+
+An object is simply a specific instance of a class - the class would be 'Car', and the object would be something like a Tesla Model S. Another object you might create would be a Lamborghini Aventador. You can create as many objects as you want using the same class!
+
 Classes can be created and used like this. Notice how the type of the object that is instantiated is declared, and how the object is instantiated.
 
 ```dart
@@ -241,27 +251,43 @@ class Car {
 }
 
 void main() {
-  Car tesla = Car();
+  // type 'Car'
+  Car tesla = Car(); // class is instantiated with parentheses, ()
+  // populating each of the attributes we defined in the above class
   tesla.name = 'Model S';
   tesla.price = 50000;
   tesla.isMadeByElonMusk = true;
 }
 ```
 
-Here's an example of how constructors and methods work.
+Now, it would be very tedious and inefficient to manually set all the attributes of an object after we've created one. Doing tesla.name, tesla.price, ..., isn't good enough for us.
+
+That's where constructors come in. Constructors allow us to define a function in our class that will deal with setting all the attributes for us. Then, to instantiate a class, all we have to do is pass in the parameters. See the example below.
+
+Another important concept relating to classes is methods.
+
+Methods are functions defined in our class, that deal with data and perform special operations relating to our class. For example, we might want to check whether or not our car is expensive. We can do so by defining an 'isExpensive()' method inside our class. 
+
+Note that methods defined within a certain class have access to the attributes associated with the object it was called upon. If the 'isExpensive()' method is called upon our tesla object, it has access to the tesla.price value.
 
 ```dart
+// define a class named car
 class Car {
+  // define a constructor that takes in a String name, int price and bool isMadeByElonMusk
   Car(String name, int price, bool isMadeByElonMusk) {
+    // set all the object's attributes equal to the inputs passed in
     this.name = name;
     this.price = price;
     this.isMadeByElonMusk = isMadeByElonMusk;
   }
+  // defining the attributes of the class
   String name;
   int price;
   bool isMadeByElonMusk;
   
+  // defining the method 'isExpensive' that returns type bool
   bool isExpensive() {
+    // 'this.price' refers specifically to the price value of the object it was called upon
     if (this.price > 30000) {
       return true;
     } else {
@@ -271,7 +297,8 @@ class Car {
 }
 
 void main() {
-  // instantiate the class by using its constructor
+  // instantiate the class by using its constructor, passing in the expected parameters
+  // we defined already
   Car tesla = Car('Model S', 50000, true);
   // returns true by using the Car class's method, isExpensive, because tesla.price = 50,000
   bool isCarExpensive = tesla.isExpensive();
@@ -288,7 +315,22 @@ As always, make sure you review these concepts often to get familiar with them. 
 
 ## Learning Flutter UI
 
-Now that you know some of the basics of the dart programming language, let's take a look at the Flutter framework - first, we'll install a programing environment for Flutter.
+Now that you know some of the basics of the dart programming language, let's take a look at the Flutter framework.
+
+Outline:
+<ul>
+  <li><a href="#installation">Installation</a></li>  
+  <li><a href="#widgets">Widgets</a></li>  
+  <li><a href="#layout">Layout</a></li>  
+  <li><a href="#formatting">Formatting</a></li>  
+  <li><a href="#stateless-widgets">Stateless Widgets</a></li>  
+  <li><a href="#stateful-widgets">Stateful Widgets</a></li>  
+  <li><a href="#null-safety">Null Safety</a></li>
+  <li><a href="#more-resources">More Resources</a></li>
+</ul>
+
+
+First, we'll install a programing environment for Flutter.
 
 ### Installation
 
@@ -732,11 +774,30 @@ String? response = fetchSomething();
 // if response is null, the 'something' variable with take on the value on the right side
 String something = response ?? 'defaultValue';
 ```
-    
+
+
+### More Resources
+
+Ok, so that was a lot! One helpful way to review all of these concepts and really see them in action in a real project is to watch Flutter App Builds on YouTube. 
+
+One particularly exellent great channel that helped me a lot was [Marcus Ng](https://www.youtube.com/channel/UC6Dy0rQ6zDnQuHQ1EeErGUA). His 'Apps from Scratch' series consists of him building user interfaces (evidently) from scratch, and he explains each one of his steps along the way. Check his channel out and take a look at the series!
+
+- [Flutter Travel UI Tutorial | Apps From Scratch](https://youtu.be/CSa6Ocyog4U)
+- [Flutter Chat UI Tutorial | Apps From Scratch](https://youtu.be/h-igXZCCrrc)
+- [Flutter YouTube API and Video Player Tutorial | Apps From Scratch](https://youtu.be/feQhHStBVLE)
+
+Another great channel is [The Flutter Way](https://www.youtube.com/channel/UCJm7i4g4z7ZGcJA_HKHLCVw). The videos are 'speed builds' of him coding up extremely well designed and beautiful Flutter User Interfaces, and you can see how he adheres to certain conventions and good practices. I recommend you check his channel out and watch some of his app builds!
+
+- [Plant App - Flutter UI - Speed Code](https://youtu.be/LN668OAUrK4)
+- [Online Shop App - Flutter UI - Speed Code](https://youtu.be/XBKzpTz65Io)
+- [COVID-19 App - Flutter UI - Speed Code](https://youtu.be/zx6uMCoW2gQ)
+
 
 ## Learning Firebase
 
-Since Flutter was developed by Google and Firebase was also developed by Google (which was made specifically for app developers), Flutter and Firebase work very well with each other as frontend and backend tools.
+Firebase is a platform for developing mobile and web applications. It is a convenient way to deal with backend or data without creating your own server or API.
+
+Since Flutter was developed by Google and Firebase was also developed by Google (which was originally made for creating apps), Flutter and Firebase work very well with each other as frontend and backend tools.
 
 The main backend of most projects will be using a database, which Firebase provides with its Cloud Firestore database. The basic structure of Firestore databases is quite simple, but is very different from conventional, realtime databases like with SQL. Instead, Firestore is a No-SQL database.
 
