@@ -324,14 +324,16 @@ Good job! Now that we have our environment set up, let's take a look at how apps
 
 Flutter apps are built using things called Widgets. If you are familiar with a frontend javascript framework, these are akin to components, but many come already built by the framework. Widgets are also quite similar to HTML elements like 'p' (for paragraph), 'h1' (for header 1), etc.
 
-Widgets are essentially the basic elements of an app that Flutter has packaged into components for us. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
+Widgets are essentially the basic elements or building blocks of an app that Flutter has created for us. They are instantiated with specific properties or parameters that Flutter is expecting from you. For example, to display text on the app screen, we use a widget called the Text widget, comparable to the html 'p' element, that is instantiated by passing in a string. Here's what it looks like.
 
 ```dart
 // displays the text on the app screen
 Text('Some string here');
 ```
 
-There's also a prebuilt button widget from the Flutter library called the ElevatedButton (just a Material theme button). Another one is the TextField, which handles input text.
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/text_widget.png">
+
+There's also a prebuilt button widget from the Flutter library called the ElevatedButton (just a Material theme button) which takes in an onPressed property (the code to be executed after the button is pressed) and a child property (the Text widget that displays the text of the button). Another one is the TextField, which handles input text.
 
 ### Layout
 
@@ -365,6 +367,11 @@ Column(
 )
 ```
 
+Left: Row, Right: Column
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/row_widget.png">
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_widget.png">
+
 Some layout widgets are wrapped around every other widget we put onto the screen. For example, the Scaffold widget is usually used to lay out or 'scaffold' the screen for us, and it is used like this:
 
 ```dart
@@ -374,6 +381,10 @@ Scaffold(
   ),
 )
 ```
+
+Left: with Scaffold, Right: without Scaffold
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_with.png">
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/scaffold_without.png">
 
 Another useful widget is the ListView.builder widget. The ListView.builder widget takes in two main arguments - the itemCount (how many list items to build), and the itemBuilder (which will return what is actually built). Here's what it looks like.
 
@@ -411,14 +422,16 @@ Text(
   'text to display',
   style: TextStyle(
     // font color
-    color: Colors.black,
+    color: Colors.purple,
     // font size
-    fontSize: 12.0,
+    fontSize: 16.0,
     // font weight
     fontWeight: FontWeight.bold,
   ),
 )
 ```
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/textstyle.png">
 
 For styling in a Container widget, we use the 'decoration' property and pass in a 'BoxDecoration' object that is instantiated with our styles.
 
@@ -427,16 +440,22 @@ Container(
   // styling the container
   decoration: BoxDecoration(
     // you can define the background color in this object instead
-    color: Colors.black,
+    color: Colors.blue,
     // border radius - valid arguments must be of class BorderRadius
     borderRadius: BorderRadius.circular(20.0),
   ),
+  height: 50.0,
+  width: 50.0,
   // margin of the container - argument must be of class EdgeInsets
   margin: EdgeInsets.all(8.0),
-  // child element
-  child: Text('hi'),
+  // child element (using the Center widget centers the Text widget)
+  child: Center(
+    Text('hello!')
+  ),
 )
 ```
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/container_style.png">
 
 In Column widgets, you might need to vertically align your objects to the center of the page. Here's how you could do that using the Column widget's 'mainAxisAlignment' property (main axis of the column is vertical). You can also align text horizontally in a column widget using the 'crossAxisAlignment' property.
 
@@ -452,6 +471,12 @@ Column(
   ],
 )
 ```
+
+Left: without MainAxisAlignment.center, Right: with MainAxisAlignment.center (as in the code example above)
+
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_start.png">
+<img width="20%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/column_center.png">
+
 
 Other properties of Column include crossAxisAlignment, mainAxisSize, and more. Chances are, if you feel like you need to do something to style your widget, you just need to Google the properties of that widget, or Google how to accomplish what you need to find which property to use.
 
