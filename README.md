@@ -386,7 +386,7 @@ Scaffold(
 )
 ```
 
-Note: the Scaffold applies basic styling to the page, like making the background color white, making the text black, making a default font size, etc.
+Note: the Scaffold applies basic styling to the page, like making the background color white, making the text black, making a default font size, etc. Without a Scaffold, you are basically rendering pure or raw widgets to a completely blank screen that has essentially no data or styles applied.
 
 Left: with Scaffold
 <br />
