@@ -24,7 +24,7 @@
         <li><a href="#conditionals">Conditionals</a></li>
         <li><a href="#loops">Loops</a></li>
         <li><a href="#classes,-objects,-and-constructors">Classes, Objects, and Constructors</a></li>
-        <li><a href="#more-resources">More Resources</a></li>
+        <li><a href="#more-dart-resources">More Dart Resources</a></li>
       </ul>
     </li>
     <li>
@@ -37,7 +37,7 @@
         <li><a href="#stateless-widgets">Stateless Widgets</a></li>  
         <li><a href="#stateful-widgets">Stateful Widgets</a></li>  
         <li><a href="#null-safety">Null Safety</a></li>
-        <li><a href="#more-resources">More Resources</a></li>
+        <li><a href="#more-flutter-resources">More Flutter Resources</a></li>
       </ul>
     </li>
     <li><a href="#learning-firebase">Learning Firebase</a></li>
@@ -58,6 +58,7 @@
         <li><a href="#testing">Testing</a></li>
       </ul>
     </li>
+    <li><a href="#challenge-project">Challenge Project</a></li>
     <li><a href="#helpful-resources">Helpful Resources</a></li>
     <li><a href="#contributing">Contributing</a></li>
   </ol>
@@ -73,8 +74,9 @@ With all the hype around Flutter and mobile app development, learning Flutter is
 - the language is constantly being updated (to the point where tutorials from just a few months ago are out of date)
 - there are a lack of freely available, well thought out and comprehensive courses or books compared to some other more established frameworks and languages like python
 
-This guide compiles tutorials, tips, examples (with screenshots), and resources to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
+This guide compiles tutorials, tips, examples (with screenshots), resources, and even an example project to help make the learning process for Flutter much easier. You can be a complete beginner, an intermediate or even advanced programmer to use this guide. I hope you find it helpful!
 
+Note: See the 'code' folder in this repository for all of the code within this guide.
 
 ## Getting Started
 
@@ -104,7 +106,7 @@ Outline:
 - [Conditionals](#conditionals)
 - [Loops](#loops)
 - [Classes, Objects, and Constructors](#classes,-objects,-and-constructors)
-- [More Resources](#more-resources)
+- [More Dart Resources](#more-dart-resources)
 
 ### Variables
 
@@ -117,7 +119,7 @@ String foo = 'foo';
 int bar = 0;
 double foobar= 12.454;
 bool isCool = true;
-List<String> = ['foo', 'bar'];
+List<String> foobarList = ['foo', 'bar'];
 ```
 
 Dictionaries (which map keys to values) are specificed as the 'Map' type in dart. You have to specify the key type and the value type, like as follows.
@@ -126,14 +128,14 @@ Dictionaries (which map keys to values) are specificed as the 'Map' type in dart
 Map<String, int> grades = {
   'John': 99,
   'Doe': 30,
-}
+};
 ```
 
 You will get an error if you assign an incompatible type to the same variable.
     
 ```dart
-String foo = 'foo';
-foo = 2; // ERROR
+String errorExample = 'foo';
+errorExample = 2; // ERROR
 ```
     
 You can use 'var' and 'dynamic' to make a variable type dynamic, but it is usually not a good idea to do this, as it could end up in frustrating errors down the line.
@@ -181,7 +183,7 @@ For asynchronous functions in dart, add the 'async' keyword between the parenthe
 
 ```dart
 Future<String> retrieveData() async {
-  response = await someAPICall(); // assuming the api call returns a string
+  String response = await someAPICall(); // assuming the api call returns a string
   return response;
 }
 ```
@@ -306,12 +308,15 @@ void main() {
 ```
 
     
-### More resources
+### More Dart Resources
 
 As always, make sure you review these concepts often to get familiar with them. Here are some more resources to help you cement these into your brain that I found very useful when I was learning.
 
+- [Dart Docs - Dart Cheatsheet](https://dart.dev/codelabs/dart-cheatsheet)
 - [Dart Programing Tutorial - Full Course](https://youtu.be/Ej_Pcr4uC2Q)
 - [Dart Tutorials](https://dart.dev/tutorials)
+
+See the [dart_examples.dart](https://github.com/antz22/ultimate-guide-to-flutter/blob/master/code/dart_examples.dart) file in the 'code' folder to see all the examples from this dart tutorial.
 
 ## Learning Flutter UI
 
@@ -326,7 +331,7 @@ Outline:
   <li><a href="#stateless-widgets">Stateless Widgets</a></li>  
   <li><a href="#stateful-widgets">Stateful Widgets</a></li>  
   <li><a href="#null-safety">Null Safety</a></li>
-  <li><a href="#more-resources">More Resources</a></li>
+  <li><a href="#more-flutter-resources">More Flutter Resources</a></li>
 </ul>
 
 
@@ -776,7 +781,7 @@ String something = response ?? 'defaultValue';
 ```
 
 
-### More Resources
+### More Flutter Resources
 
 Ok, so that was a lot! One helpful way to review all of these concepts and really see them in action in a real project is to watch Flutter App Builds on YouTube. 
 
@@ -791,6 +796,8 @@ Another great channel is [The Flutter Way](https://www.youtube.com/channel/UCJm7
 - [Plant App - Flutter UI - Speed Code](https://youtu.be/LN668OAUrK4)
 - [Online Shop App - Flutter UI - Speed Code](https://youtu.be/XBKzpTz65Io)
 - [COVID-19 App - Flutter UI - Speed Code](https://youtu.be/zx6uMCoW2gQ)
+
+See the [flutter_examples.dart](https://github.com/antz22/ultimate-guide-to-flutter/blob/master/code/flutter_examples.dart) file to see all the code snippets from this section of the tutorial (to use as reference).
 
 
 ## Learning Firebase
@@ -979,7 +986,7 @@ MultiProvider(
 
 What a natural progression!
 
-That's the basics of state management. Take a look at the extra resources listed below to get more familiar with these concepts and syntax.
+That's the basics of state management. Take a look at the extra resources listed below to get more familiar with these concepts and syntax. Also, take a look at the [advanced_flutter_examples.dart](https://github.com/antz22/ultimate-guide-to-flutter/blob/master/code/advanced_flutter_examples.dart) file in the 'code' folder to see all of the examples provided in this section of the tutorial (to use as reference).
 
 
 ## Best Practices
@@ -1133,11 +1140,34 @@ Take a look at these resources to learn about testing in flutter.
 - [Flutter Docs - An introduction to unit testing](https://flutter.dev/docs/cookbook/testing/unit/introduction)
 - [Flutter Docs - Testing Flutter Apps](https://flutter.dev/docs/testing)
 
+## Challenge Project
+
+Now that you know the basic syntax of Flutter and how it works, you need to put this knowledge into practice! I recommend first following along with Flutter App Build tutorials (provided [above](#more-flutter-resources) to see just how advanced coders develop apps, and then try to code an app with only UI components by yourself (you can look on [dribbble](https://dribbble.com/shots/popular/mobile) for ui inspiration).
+
+To help you out a bit, I've picked a [dribbble post](https://dribbble.com/shots/15079032-Travel-App-Concept) you can try to implement in a Flutter app on your own.
+
+<img width="70%" src="https://github.com/antz22/ultimate-guide-to-flutter/blob/master/assets/dribbble.webp">
+
+This is a dribbble post created by [Risang Kuncoro](https://dribbble.com/risangkuncoro) that consists of 2 screens of a travel app. The challenge is to (almost) perfectly recreate this app on a Flutter project of your own.
+
+For all the information on the page, it is okay if you hard code it into your application, but feel free to try to create simple business logic (i.e. creating models for each location) as an added challenge.
+
+Hint: among other things, you'll have to utilize...
+- the Stack widget
+- the Icon widget
+- the AssetImage widget
+- for building a navigation bar -> bottomNavigationBar: BottomNavigationBar(...)
+- for navigating to another page -> Navigator.push(context, MaterialPageRoute(...))
+- and more!
+
+If you have any problems along the way, remember that Google, Stack Overflow, and the Flutter docs are your best friend!
+
+
 ## Helpful Resources
 
-Now that you know the basic syntax of Flutter and how it works, you need to put this knowledge into practice! I recommend following along with Flutter App Build tutorials to see just how advanced coders develop apps, and then try to code an app with only UI components by yourself (you can look on [dribbble](https://dribbble.com/shots/popular/mobile) for ui inspiration). Good luck!
+Now that you've learned the syntax and tried to implement a Flutter project by yourself, I wish you luck in your endeavors to create your own create, Flutter apps!
 
-These are all the compiled resources, listed from more beginner-friendly to more advanced.
+To help you along the rest of your journey, here is a list of all the compiled resources, ordered from more beginner-friendly to more advanced.
 
 Dart
 
