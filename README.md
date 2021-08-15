@@ -473,7 +473,7 @@ Usually, you can also pass in all of your styles to the widget through the param
 
 Many of these parameters only accept very specific types or objects. The 'child' property of the Container widget will only accept another Flutter widget. The 'color' property will only accept objects predefined by Flutter (like Colors.black, Colors.blue, etc) or objects instantiated in a certain way (Color(0xFFFFFFFF), one way to do it using hex codes).
 
-In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget.
+In the Text widget, we can style the text by passing in a 'TextStyle' object instantiated with our styles, passed into the 'style' property of the Text widget. Notice how the color property takes in a Color object from the Flutter library, Colors.purple. Also, the fontWeight property takes in a FontWeight object.
 
 ```dart
 Text(
@@ -785,7 +785,7 @@ String something = response ?? 'defaultValue';
 
 Ok, so that was a lot! One helpful way to review all of these concepts and really see them in action in a real project is to watch Flutter App Builds on YouTube. 
 
-One particularly exellent great channel that helped me a lot was [Marcus Ng](https://www.youtube.com/channel/UC6Dy0rQ6zDnQuHQ1EeErGUA). His 'Apps from Scratch' series consists of him building user interfaces (evidently) from scratch, and he explains each one of his steps along the way. Check his channel out and take a look at the series!
+One particularly excellent channel that helped me a lot was [Marcus Ng](https://www.youtube.com/channel/UC6Dy0rQ6zDnQuHQ1EeErGUA). His 'Apps from Scratch' series consists of him building user interfaces (evidently) from scratch, and he explains each one of his steps along the way. Check his channel out and take a look at the series!
 
 - [Flutter Travel UI Tutorial | Apps From Scratch](https://youtu.be/CSa6Ocyog4U)
 - [Flutter Chat UI Tutorial | Apps From Scratch](https://youtu.be/h-igXZCCrrc)
@@ -1011,7 +1011,7 @@ Models are the classes you want to create to make it easier to work with data in
     
 ```dart
 class User {
-  String usernamename;
+  String username;
   String nickname;
   int age;
 }
