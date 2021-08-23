@@ -14,6 +14,10 @@
         <img src="https://img.shields.io/github/stars/antz22/ultimate-guide-to-flutter?label=star&style=for-the-badge" /></a>
     <a href="https://github.com/antz22/ultimate-guide-to-flutter/network/members" alt="Forks">
         <img src="https://img.shields.io/github/forks/antz22/ultimate-guide-to-flutter?style=for-the-badge" /></a>
+    <a href="https://img.shields.io/badge/flutter-2.2-green" alt="Flutter">
+        <img src="https://img.shields.io/badge/flutter-2.2-green?style=for-the-badge" /></a>
+    <a href="https://img.shields.io/badge/dart-2.13-green" alt="Flutter">
+        <img src="https://img.shields.io/badge/dart-2.13-green?style=for-the-badge" /></a>
   </p>
 </p>
 <br />
