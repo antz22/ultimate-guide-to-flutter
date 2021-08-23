@@ -8,6 +8,13 @@
   <p align="center">
     A complete and comprehensive guide to learning Flutter with explanations, screenshots, tips, resources, and examples for Dart, Flutter, Firebase, State Management and more.
   </p>
+
+  <p align="center">
+    <a href="https://github.com/antz22/ultimate-guide-to-flutter/stargazers" alt="Stars">
+        <img src="https://img.shields.io/github/stars/antz22/ultimate-guide-to-flutter?label=star&style=for-the-badge" /></a>
+    <a href="https://github.com/antz22/ultimate-guide-to-flutter/network/members" alt="Forks">
+        <img src="https://img.shields.io/github/forks/antz22/ultimate-guide-to-flutter?style=for-the-badge" /></a>
+  </p>
 </p>
 <br />
 
