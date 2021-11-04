@@ -18,6 +18,9 @@
         <img src="https://img.shields.io/badge/flutter-2.2-green?style=for-the-badge" /></a>
     <a href="https://img.shields.io/badge/dart-2.13-green" alt="Flutter">
         <img src="https://img.shields.io/badge/dart-2.13-green?style=for-the-badge" /></a>
+    <a href="https://github.com/Solido/awesome-flutter">
+        <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
+    </a>
   </p>
 </p>
 <br />
