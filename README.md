@@ -402,7 +402,7 @@ Widgets are also used for things more complicated than just displaying text or p
 
 ```dart
 Container(
-  child: Text('hello!' )
+  child: Text('hello!')
 ),
 ```
 
@@ -908,7 +908,7 @@ Future<int> retrieveMacbookPrice() async {
   // keys (type String) to values (type dynamic)
   Map<String, dynamic> macbookData = document.data();
 
-  int macbookPrice = macbookData['price'];
+  return int macbookPrice = macbookData['price'];
 }
 
 FutureBuilder(
