@@ -1193,6 +1193,7 @@ Flutter
 - [Flutter Crash Course for Beginners 2021 - Build a Flutter App with Google's Flutter & Dart](https://youtu.be/x0uinJvhNxI)
 - [Flutter Tutorial for Beginners](https://youtube.com/playlist?list=PL4cUxeGkcC9jLYyp2Aoh6hcWuxFDX6PBJ)
 - [Flutter Crash Course](https://youtu.be/1gDhl4leEzA)
+- [Flutter Developer Roadmap](https://roadmap.sh/flutter)
 
 Flutter App Tutorials
 
